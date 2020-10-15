@@ -1,21 +1,49 @@
 package com.zr.poplar.service;
 
+import java.util.List;
+
 import com.zr.poplar.pojo.Customer;
 
 public interface ICustomerService {
 	/**
 	 * 用户注册
+	 * @param customer
+	 * @return
 	 */
 	Boolean register(Customer customer);
-
+	
 	/**
 	 * 用户登录
+	 * @param email
+	 * @param password
+	 * @return
 	 */
-	Customer Login(String email, String password);
-
+	Customer login(String email, String password);
+	
 	/**
-	 * 修改个人信息
+	 * 编辑个人资料（根据用户ID修改）
+	 * @param customer
 	 */
 	void changeInfor(Customer customer);
+	
+	/**
+	 * 显示所有客户
+	 * @return
+	 */
+	List<Customer> showAllCustomer();
+	
+	/**
+	 * 根据名字查询客户
+	 * @param name
+	 * @return
+	 */
+	Customer findCustomerByName(String name);
+	
+	/**
+	 * 根据昵称/地址/电话号码/邮箱模糊查询用户
+	 * @param info
+	 * @return
+	 */
+	List<Customer> findCustomerLike(String info);
 
 }

@@ -10,7 +10,7 @@ import com.zr.poplar.pojo.Orderform;
  * @author OrderService
  *
  */
-public class OrderService implements IOrderDao{
+public class OrderDao implements IOrderDao{
 	
 	/**
 	 * 添加订单

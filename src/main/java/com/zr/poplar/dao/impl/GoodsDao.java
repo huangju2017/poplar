@@ -10,7 +10,7 @@ import com.zr.poplar.pojo.Goods;
  * @author GoodsService
  *
  */
-public class GoodsService implements IGoodsDao{
+public class GoodsDao implements IGoodsDao{
 	
 	/**
 	 * 添加商品
