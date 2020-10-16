@@ -4,9 +4,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import com.zr.poplar.dao.IEmpDao;
+import com.zr.poplar.pojo.Customer;
 import com.zr.poplar.pojo.Emp;
 import com.zr.poplar.util.TxDBUtils;
 
@@ -43,7 +45,7 @@ public class EmpDao implements IEmpDao{
 	 * 删除用户
 	 */
 	@Override
-	public Boolean deleteEmp(Integer id) {
+	public Boolean deleteEmp(String id) {
 		String sql = "delete from emp where empid = ?";
 		
 		try {
@@ -62,6 +64,18 @@ public class EmpDao implements IEmpDao{
 		
 		try {
 			return runner.query(sql, new BeanListHandler<Emp>(Emp.class));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public Emp empLogin(String empNumber, String empPassword) {
+		String sql = "select * from emp where empNumber = ? and empPassword = ?";
+		
+		try {
+			return runner.query(sql, new BeanHandler<Emp>(Emp.class), empNumber,empPassword);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -31,7 +31,7 @@ public class EmpService implements IEmpService{
 	 * 删除用户
 	 */
 	@Override
-	public Boolean deleteEmp(Integer id) {
+	public Boolean deleteEmp(String id) {
 		return dao.deleteEmp(id);
 	}
 	/**
@@ -40,6 +40,11 @@ public class EmpService implements IEmpService{
 	@Override
 	public List<Emp> showAllEmp() {
 		return dao.showAllEmp();
+	}
+
+	@Override
+	public Emp empLogin(String empNumber, String empPassword) {
+		return dao.empLogin(empNumber, empPassword);
 	}
 
 }

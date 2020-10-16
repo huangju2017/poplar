@@ -33,7 +33,7 @@ public class TestServlet {
 		dao.addEmp(new Emp(null,10010,"黄榉","123"));
 
 		// 删除数据 
-		dao.deleteEmp(5);
+		dao.deleteEmp("5");
 
 		// 打印所有数据 
 		System.out.println(dao.showAllEmp());

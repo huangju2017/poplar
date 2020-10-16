@@ -2,6 +2,7 @@ package com.zr.poplar.dao;
 
 import java.util.List;
 
+import com.zr.poplar.pojo.Customer;
 import com.zr.poplar.pojo.Emp;
 
 /**
@@ -10,6 +11,14 @@ import com.zr.poplar.pojo.Emp;
  *
  */
 public interface IEmpDao {
+	
+	/**
+	 * 员工登录
+	 * @param email
+	 * @param password
+	 * @return
+	 */
+	Emp empLogin(String empNumber, String empPassword);
 	
 	/**
 	 * 添加员工
@@ -22,7 +31,7 @@ public interface IEmpDao {
 	 * @param deleteEmp
 	 * @return
 	 */
-	Boolean deleteEmp(Integer id);
+	Boolean deleteEmp(String id);
 	
 	/**
 	 * 显示所有员工

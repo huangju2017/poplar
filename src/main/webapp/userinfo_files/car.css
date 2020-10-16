@@ -1,0 +1,187 @@
+body {
+	background-color: #f9f9f9;
+}
+
+.main {
+	width: 800px;
+	margin: auto;
+}
+
+.main .box-top {
+	width: 100%;
+	height: 50px;
+	padding: 40px 0;
+	text-align: center;
+}
+
+.main .box-top img {
+	width: 50px;
+	height: 50px;
+	float: left;
+	border: 0;
+	outline: none;
+	border-radius: 3px;
+}
+
+.main .box-top .tit a {
+	font-size: 25px;
+	font-weight: bold;
+	color: #FF6700;
+	float: left;
+	font-family: arial, "Hiragino Sans GB", "Microsoft YaHei", "微軟正黑體", "儷黑 Pro", sans-serif;
+	margin-top: 5px;
+	margin-left: 15px;
+}
+
+.main .box-top .exit a {
+	font-size: 15px;
+	color: #666;
+	float: right;
+	margin-top: 13px;
+	cursor: pointer;
+}
+
+.main .box-top .exit a:hover {
+	color: #FF6700;
+}
+
+.main .box-main {
+	width: 100%;
+	height: 500px;
+	padding: 10px;
+	position: relative;
+	background-color: #fff;
+	border: 1px solid #e6e6e6;
+	border-radius: 5px;
+}
+
+.main .photo {
+	width: 100px;
+	height: 100px;
+	border: 3px solid #e3e3e3;
+	border-radius: 50px;
+	position: absolute;
+	top: -50px;
+	right: 50px;
+	background-image: url(../images/yilogo.jpg);
+}
+
+.main .update-photo {
+	width: 200px;
+	height: 150px;
+	float: left;
+	margin: 150px 60px;
+}
+
+.main .update-photo .tx {
+	width: 100px;
+	height: 100px;
+	margin: auto;
+	border: 3px solid #e3e3e3;
+	border-radius: 50px;
+	background-image: url(../images/yilogo.jpg);
+}
+
+.main .update-photo span {
+	position: relative;
+	top: 10px;
+	left: 43%;
+}
+
+.main .box-main .userinfo {
+	width: 450px;
+	margin-top: 50px;
+	float: right;
+	padding: 10px;
+}
+
+.main .box-main .userinfo .tit {
+	width: 100%;
+	height: 30px;
+}
+
+.main .box-main .userinfo .sjupdate {
+	float: left;
+	font-size: 20px;
+}
+
+.main .box-main .userinfo .bj {
+	float: right;
+	height: 20px;
+}
+
+.main .box-main .userinfo .bj:hover {
+	color: #FF6700;
+}
+
+.main .box-main .userinfo .jbxx {}
+
+.main .box-main .userinfo .jbxx .hang {
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+}
+
+.main .box-main .userinfo .jbxx .hang .y {
+	margin-left: 40px;
+}
+
+.main .box-main .userinfo .jbxx .hang .x {
+	margin-left: 10px;
+}
+
+.main .box-main .userinfo .jbxx .hang .y,
+.x {
+	font-size: 16px;
+	font-weight: 200;
+	font-style: normal;
+}
+
+.main .box-main .gjuserinfo {
+	width: 450px;
+	margin-top: 50px;
+	float: right;
+	padding: 10px;
+}
+
+.main .box-main .gjuserinfo .tit {
+	width: 100%;
+	height: 30px;
+}
+
+.main .box-main .gjuserinfo .sjupdate {
+	float: left;
+	font-size: 20px;
+}
+
+.main .box-main .gjuserinfo .bj {
+	float: right;
+	height: 20px;
+}
+
+.main .box-main .gjuserinfo .bj:hover {
+	color: #FF6700;
+}
+
+.main .box-main .gjuserinfo .jbxx {}
+
+.main .box-main .gjuserinfo .jbxx .hang {
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+}
+
+.main .box-main .gjuserinfo .jbxx .hang .y {
+	margin-left: 40px;
+}
+
+.main .box-main .gjuserinfo .jbxx .hang .x {
+	margin-left: 10px;
+}
+
+.main .box-main .gjuserinfo .jbxx .hang .y,
+.x {
+	font-size: 16px;
+	font-weight: 200;
+	font-style: normal;
+}

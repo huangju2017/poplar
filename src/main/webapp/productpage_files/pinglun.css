@@ -1,0 +1,12 @@
+			.pinglun .fa{
+				margin-left: 85em ;
+				width: 7em;
+				height: 3em;
+				background-color: orangered;
+			}
+			textarea{
+				width: 76em;
+				height: 20em;
+				display: flex;
+				margin: auto;
+			}

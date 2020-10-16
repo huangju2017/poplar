@@ -12,6 +12,14 @@ import com.zr.poplar.pojo.Emp;
 public interface IEmpService {
 	
 	/**
+	 * 员工登录
+	 * @param email
+	 * @param password
+	 * @return
+	 */
+	Emp empLogin(String empNumber, String empPassword);
+	
+	/**
 	 * 添加员工
 	 * @return addEmp
 	 */
@@ -22,7 +30,7 @@ public interface IEmpService {
 	 * @param deleteEmp
 	 * @return
 	 */
-	Boolean deleteEmp(Integer id);
+	Boolean deleteEmp(String id);
 	
 	/**
 	 * 显示所有员工
