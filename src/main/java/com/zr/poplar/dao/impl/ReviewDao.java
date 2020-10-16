@@ -64,7 +64,7 @@ public class ReviewDao implements IReviewDao{
 	 */
 	@Override
 	public List<Review> showAllReview() {
-		String sql = "select reviewcontent,reviewdate from review";
+		String sql = "select reviewContent,reviwDate from review";
 		
 		try {
 			return runner.query(sql, new BeanListHandler<Review>(Review.class));
