@@ -30,9 +30,11 @@ public class CustomerDao implements ICustomerDao {
 	
 	/**
 	 * 编辑个人资料（根据用户ID修改）
+	 * @return 
 	 */
 	@Override
-	public void changeInfor(Customer customer) {
+	public Boolean changeInfor(Customer customer) {
+		return null;
 
 	}
 	

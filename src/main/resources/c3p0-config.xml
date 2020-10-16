@@ -11,7 +11,7 @@
 		<!-- 对于特殊符号, 需要使用其实体编码 -->
 		<property name="jdbcUrl">jdbc:mysql://localhost:3306/baiyang?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true</property>
 		<property name="user">root</property>
-		<property name="password">123456</property>
+		<property name="password">root</property>
 		
 		<!-- 
 		<property name="checkoutTimeout">30000</property>

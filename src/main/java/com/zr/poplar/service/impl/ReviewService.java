@@ -24,24 +24,24 @@ public class ReviewService implements IReviewService{
 	 * 添加评论
 	 */
 	@Override
-	public Boolean addReview(Goods goods, Integer customerId) {
-		return dao.addReview(goods, customerId);
+	public Boolean addReview(Review review) {
+		return dao.addReview(review);
 	}
 	
 	/**
 	 * 撤销评论
 	 */
 	@Override
-	public Boolean deleteAllReview(Integer goodsId) {
-		return dao.deleteAllReview(goodsId);
+	public Boolean deleteAllReview(Integer customerId) {
+		return dao.deleteAllReview(customerId);
 	}
 	
 	/**
 	 * 展示所有评论
 	 */
 	@Override
-	public List<Review> showAllReview(Integer goodsId) {
-		return dao.showAllReview(goodsId);
+	public List<Review> showAllReview() {
+		return dao.showAllReview();
 	}
 
 }

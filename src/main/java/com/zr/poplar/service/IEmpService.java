@@ -15,14 +15,14 @@ public interface IEmpService {
 	 * 添加员工
 	 * @return addEmp
 	 */
-	Boolean addEmp();
+	Boolean addEmp(Emp emp);
 	
 	/**
 	 * 删除员工
 	 * @param deleteEmp
 	 * @return
 	 */
-	Boolean deleteEmp(Emp emp);
+	Boolean deleteEmp(Integer id);
 	
 	/**
 	 * 显示所有员工

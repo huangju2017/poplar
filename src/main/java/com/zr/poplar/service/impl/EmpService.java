@@ -23,16 +23,16 @@ public class EmpService implements IEmpService{
 	 * 添加员工
 	 */
 	@Override
-	public Boolean addEmp() {
-		return dao.addEmp();
+	public Boolean addEmp(Emp emp) {
+		return dao.addEmp(emp);
 	}
 	
 	/**
 	 * 删除用户
 	 */
 	@Override
-	public Boolean deleteEmp(Emp emp) {
-		return dao.deleteEmp(emp);
+	public Boolean deleteEmp(Integer id) {
+		return dao.deleteEmp(id);
 	}
 	/**
 	 * 显示所有员工

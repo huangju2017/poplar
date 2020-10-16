@@ -18,20 +18,20 @@ public interface IReviewService {
 	 * @param customerId
 	 * @return
 	 */
-	Boolean addReview(Goods goods,Integer customerId);
+	Boolean addReview(Review review);
 	
 	/**
 	 * 撤回评论
 	 * @param goodsId
 	 * @return
 	 */
-	Boolean deleteAllReview(Integer goodsId);
+	Boolean deleteAllReview(Integer customerId);
 	
 	/**
 	 * 展示所有评论
 	 * @param goodsId
 	 * @return
 	 */
-	List<Review> showAllReview(Integer goodsId);
+	List<Review> showAllReview();
 	
 }
