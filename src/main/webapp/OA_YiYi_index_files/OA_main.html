@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://127.0.0.1:8080/YiYi/OA_query_seller.jsp -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--<base href="http://127.0.0.1:8080/YiYi/">--><base href=".">
+
+<title>Insert title here</title>
+<link rel="stylesheet" href="./bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="./fenye.css">
+<script src="./jquery-3.5.1.min.js.下载"></script>
+<script src="./popper.min.js.下载"></script>
+<script src="./bootstrap.min.js.下载"></script>
+<script src="./fenye.js.下载" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	//全局加载
+	$(function() {
+		$.post("servlet/admin/query_seller",function(data){
+			var json = JSON.parse(data);
+			var slist = json.sList;
+			for(i in slist){
+				var seller = slist[i];
+				$("#pageMain").append(
+						"<tr>"
+						+"<td>"+seller.name+"</td>"
+						+"<td>"+seller.tel+"</td>"
+						+"<td>"+seller.email+"</td>"
+						+"<td>"+seller.address +"</td>"
+						+"<td>"+seller.creat_time +"</td>"
+						+"<td>"+seller.shop_name +"</td>"			
+						+"</tr>"		
+				);
+			}
+			fenye();
+		});
+	});
+	 function fenye() {
+			var tabPage;
+		    tabPage({
+		        pageMain: '#pageMain',
+		        pageNav: '#pageNav',
+		        pagePrev: '#prev',
+		        pageNext: '#next',
+		        curNum: 5,
+		        /*每页显示的条数*/
+		        activeClass: 'active',
+		        /*高亮显示的class*/
+		        ini: 0 /*初始化显示的页面*/
+		    });
+
+		    function tabPage(tabPage) {
+		        var pageMain = $(tabPage.pageMain);
+		        /*获取内容列表*/
+		        var pageNav = $(tabPage.pageNav);
+		        /*获取分页*/
+		        var pagePrev = $(tabPage.pagePrev);
+		        /*上一页*/
+		        var pageNext = $(tabPage.pageNext);
+		        /*下一页*/
+
+
+		        var curNum = tabPage.curNum;
+		        /*每页显示数*/
+		        var len = Math.ceil(pageMain.find("tr").length / curNum);
+		        /*计算总页数*/
+		        console.log(len);
+		        var pageList = '';
+		        /*生成页码*/
+		        var iNum = 0;
+		        /*当前的索引值*/
+
+		        for (var i = 0; i < len; i++) {
+		            pageList += '<a href="javascript:;">' + (i + 1) + '</a>';
+		        }
+		        pageNav.html(pageList);
+		        /*头一页加高亮显示*/
+		        pageNav.find("a:first").addClass(tabPage.activeClass);
+
+		        /*******标签页的点击事件*******/
+		        pageNav.find("a").each(function() {
+		            $(this).click(function() {
+		                pageNav.find("a").removeClass(tabPage.activeClass);
+		                $(this).addClass(tabPage.activeClass);
+		                iNum = $(this).index();
+		                $(pageMain).find("tr").hide();
+		                for (var i = ($(this).html() - 1) * curNum; i < ($(this).html()) * curNum; i++) {
+		                    $(pageMain).find("tr").eq(i).show()
+		                }
+
+		            });
+		        })
+
+
+		        $(pageMain).find("tr").hide();
+		        /************首页的显示*********/
+		        for (var i = 0; i < curNum; i++) {
+		            $(pageMain).find("tr").eq(i).show()
+		        }
+
+
+		        /*下一页*/
+		        pageNext.click(function() {
+		            $(pageMain).find("tr").hide();
+		            if (iNum == len - 1) {
+		                alert('已经是最后一页');
+		                for (var i = (len - 1) * curNum; i < len * curNum; i++) {
+		                    $(pageMain).find("tr").eq(i).show()
+		                }
+		                return false;
+		            } else {
+		                pageNav.find("a").removeClass(tabPage.activeClass);
+		                iNum++;
+		                pageNav.find("a").eq(iNum).addClass(tabPage.activeClass);
+		                //                    ini(iNum);
+		            }
+		            for (var i = iNum * curNum; i < (iNum + 1) * curNum; i++) {
+		                $(pageMain).find("tr").eq(i).show()
+		            }
+		        });
+		        /*上一页*/
+		        pagePrev.click(function() {
+		            $(pageMain).find("tr").hide();
+		            if (iNum == 0) {
+		                alert('当前是第一页');
+		                for (var i = 0; i < curNum; i++) {
+		                    $(pageMain).find("tr").eq(i).show()
+		                }
+		                return false;
+		            } else {
+		                pageNav.find("a").removeClass(tabPage.activeClass);
+		                iNum--;
+		                pageNav.find("a").eq(iNum).addClass(tabPage.activeClass);
+		            }
+		            for (var i = iNum * curNum; i < (iNum + 1) * curNum; i++) {
+		                $(pageMain).find("tr").eq(i).show()
+		            }
+		        })
+
+		    }
+
+		}
+	
+</script>
+<style type="text/css">
+h2 {
+	margin-top: -10px;
+	color: #D9D3D1;
+	text-shadow: 5px 5px 5px #273067;
+	text-align: center;
+	font-size: 50px;
+	font-weight: bold;
+	letter-spacing: 20px;
+}
+
+.table-striped tr th {
+	width: 200px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	text-align: center;
+}
+
+.yincang {
+	max-width: 200px;
+	text-align: center;
+	line-height: 50px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.yincang img {
+	max-height: 100px;
+	max-width: 100px;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<h2 align="center">商户信息</h2>
+		<form action="http://127.0.0.1:8080/YiYi/" method="post" id="form1">
+			<table class="table table-striped table-hover">
+				<thead>
+				<tr>
+					<!-- <th><input type="checkbox" onchange="checkAll()" id="checkmain"/></th> -->
+
+					<th>店家老板</th>
+					<th>联系方式</th>
+					<th>邮箱</th>
+					<th>地址</th>
+					<th>申请时间</th>
+					<th>店名</th>
+
+
+
+				</tr>
+				</thead>
+				
+				<tbody id="pageMain">
+
+					<tr colspan="10" style=""></tr><tr style=""><td>z,m,s</td><td>121654</td><td>1019923988@qq.com</td><td>请问请问</td><td>2020-07-06 16:16:02.0</td><td>zms的店</td></tr><tr style=""><td>z,l,y</td><td>17318221541</td><td>10199@qq.com</td><td>召唤师峡谷</td><td>2020-07-13 09:41:47.0</td><td>令狐冲的小店</td></tr><tr style=""><td>任盈盈</td><td>1234564897</td><td>12345678921@qq.com</td><td>令狐冲他家</td><td>2020-07-13 15:58:17.0</td><td>任盈盈的小店</td></tr><tr style=""><td>小龙虾</td><td>17318221541</td><td>1478963@qq.com</td><td>召唤师峡谷</td><td>2020-07-16 15:10:56.0</td><td>大龙虾小店</td></tr></tbody>
+				
+			
+			</table>
+		</form>
+		<div id="pageBox">
+							<span class="btn btn-outline-secondary" id="prev">上一页</span>
+							<ul id="pageNav"><a href="javascript:;" class="active">1</a></ul>
+							<span class="btn btn-outline-secondary" id="next">下一页</span>
+						</div>
+	</div>
+
+</body></html>

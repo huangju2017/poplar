@@ -1,0 +1,217 @@
+body {
+	background: whitesmoke;
+}
+
+div {
+	box-sizing: border-box;
+}
+
+.cart-warp {
+	margin: 100px auto;
+}
+
+.cart-warp .list-head {
+	display: flex;
+	height: 70px;
+	line-height: 70px;
+	font-size: 14px;
+	background-color: white;
+}
+
+.cart-warp .list-head .t-checkall {
+	padding-left: 40px;
+}
+
+.cart-warp .item-box {
+	display: flex;
+	height: 120px;
+	line-height: 120px;
+	border-top: 1px solid #eaeaea;
+	background-color: white;
+}
+
+.cart-warp .t-check {
+	padding-left: 25px;
+}
+
+.cart-warp .t-check label {
+	top: 50px;
+	left: 25px;
+}
+
+.cart-warp .car-img img {
+	width: 80%;
+	height: 80%;
+	margin-top: 10px;
+}
+
+.cart-warp .change-goods-num {
+	display: flex;
+	width: 150px;
+	height: 38px;
+	line-height: 38px;
+	margin: 41px auto;
+	border: 1px solid #e0e0e0;
+}
+
+.cart-warp .change-goods-num a {
+	width: 38px;
+	height: 38px;
+	line-height: 38px;
+	font-size: 28px;
+	transition: all .3s;
+}
+
+.cart-warp .change-goods-num .goods-num {
+	width: 100px;
+	height: 30px;
+}
+
+.cart-warp .change-goods-num a:nth-child(1) {
+	float: left;
+}
+
+.cart-warp .change-goods-num a:nth-child(3) {
+	float: right;
+}
+
+.cart-warp .change-goods-num a:hover {
+	background-color: #e0e0e0;
+}
+
+.cart-warp .change-goods-num input {
+	width: 740px;
+	height: 100%;
+	border: none;
+	outline: none;
+	text-align: center;
+	font-size: 16px;
+	box-sizing: border-box;
+	vertical-align: top;
+}
+
+.cart-warp .car-action a {
+	display: block;
+	width: 24px;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	margin: 50px auto;
+	border-radius: 12px;
+	color: #757575;
+	font-size: 16px;
+	transition: all .3s;
+}
+
+.cart-warp .car-action a:hover {
+	color: #fff;
+	background-color: #e53935;
+}
+
+.cart-warp .cart-bar {
+	height: 50px;
+	line-height: 50px;
+	margin-top: 20px;
+	background-color: #fff;
+	font-size: 14px;
+}
+
+.cart-warp .cart-bar .operation {
+	float: left;
+	padding-left: 25px;
+}
+
+.cart-warp .cart-bar .operation a:nth-child(2) {
+	margin-left: 25px;
+}
+
+.cart-warp .cart-bar .toolbar-right {
+	width: 800px;
+	float: right;
+	display: flex;
+}
+
+.cart-warp .cart-bar .toolbar-right .amount-sum,
+.cart-warp .cart-bar .toolbar-right .price-sum,
+.cart-warp .cart-bar .toolbar-right .btn-area {
+	flex: 1;
+	height: 50px;
+}
+
+.cart-warp .cart-bar .toolbar-right .amount-sum em,
+.cart-warp .cart-bar .toolbar-right .price-sum em,
+.cart-warp .cart-bar .toolbar-right .btn-area em {
+	color: #ff4800;
+}
+
+.cart-warp .cart-bar .toolbar-right .price-sum em {
+	font-size: 30px;
+}
+
+.cart-warp .cart-bar .toolbar-right .btn-area {
+	color: #fff;
+	text-align: center;
+	font-size: 18px;
+	background-color: #ff4800;
+}
+
+.cart-warp label {
+	display: block;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	cursor: pointer;
+	position: absolute;
+	border: 1px solid #ccc;
+	top: 25px;
+	left: 25px;
+}
+
+.cart-warp input[type=checkbox] {
+	visibility: hidden;
+}
+
+.cart-warp .input:checked+label:before {
+	display: block;
+	content: "\2714";
+	text-align: center;
+	font-size: 20px;
+	color: #ff4800;
+}
+
+.cart-warp .j-checkbox:checked+label:before {
+	display: block;
+	content: "\2714";
+	text-align: center;
+	font-size: 20px;
+	color: #ff4800;
+}
+
+.cart-warp .t-checkall,
+.cart-warp .t-check {
+	position: relative;
+	width: 110px;
+}
+
+.cart-warp .car-img {
+	width: 120px;
+}
+
+.cart-warp .car-price,
+.cart-warp .car-num,
+.cart-warp .car-action {
+	width: 150px;
+	text-align: center;
+}
+
+.cart-warp .car-total {
+	width: 200px;
+	text-align: center;
+}
+
+.cart-warp .car-name {
+	flex: 1;
+}
+
+
+/*# sourceMappingURL=indexx.css.map */

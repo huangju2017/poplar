@@ -1,0 +1,68 @@
+
+#pageBox {
+	padding:10px 0 0 0;
+	text-align: center;
+}
+#pageBox span {
+	display:inline-block;
+	line-height:24px;
+	text-align:center;
+}
+#pageNav {
+	display:inline-block;
+}
+#pageNav a {
+	display:inline-block;
+	width:36px;
+	height:36px;
+	border-radius: 5px;
+	text-align:center;
+	font-size: 20px;
+	line-height: 30px;
+	color:#3a87ad;
+	text-decoration:none;
+}
+#pageNav a.active,#pageNav a:hover {
+	background:#3a87ad;
+	color:#EFEFEF;
+}
+#prev:hover {
+	cursor:pointer;
+}
+#next:hover {
+	cursor:pointer;
+}
+
+
+#pageBox2 {
+	padding:10px 0 0 0;
+}
+#pageBox2 span {
+	display:inline-block;
+	line-height:24px;
+	text-align:center;
+}
+#pageNav2 {
+	display:inline-block;
+}
+#pageNav2 a {
+	display:inline-block;
+	width:36px;
+	height:36px;
+	border-radius: 5px;
+	text-align:center;
+	font-size: 20px;
+	line-height: 30px;
+	color:#3a87ad;
+	text-decoration:none;
+}
+#pageNav2 a.active,#pageNav a:hover {
+	background:#3a87ad;
+	color:#EFEFEF;
+}
+#prev2:hover {
+	cursor:pointer;
+}
+#next2:hover {
+	cursor:pointer;
+}

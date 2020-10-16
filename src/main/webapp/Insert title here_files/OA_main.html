@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://127.0.0.1:8080/YiYi/servlet/comment/query -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!--<base href="http://127.0.0.1:8080/YiYi/">--><base href=".">
+<title>Insert title here</title>
+<link rel="stylesheet" href="./bootstrap.min.css">
+		<script src="./jquery.min.js.下载"></script>
+		<script src="./popper.min.js.下载"></script>
+		<script src="./bootstrap.min.js.下载"></script>
+		<script type="text/javascript">
+			function checkAll(){
+				var commain = document.getElementById("checkmain")
+				var coms = document.getElementsByName("cID");
+				for (var i=0 ;i<coms.length;i++) {
+					coms[i].checked = commain.checked ;
+				}
+			}
+			function del(){
+				
+				//获得选中的数量
+				var count = $("#form1 input[name=cID]:checked").length;
+				//判断是否未选中数据项
+				if(count<1) {
+					parent.alert("请选择要删除的评论!");
+					return;
+				}
+				var form=$("#form1").get(0);
+				form.action="servlet/comment/delete";
+				form.submit();
+			}
+		</script>
+</head>
+<body>
+<div class="container">
+			<h2>所有评论</h2>
+			<form id="form1" method="post">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th><input type="checkbox" onchange="checkAll()" id="checkmain"></th>
+						<th>评论时间</th>
+						<th>评论内容</th>
+						<th>评论等级</th>
+						<th>商品ID</th>
+						<th>评论人ID</th>
+
+					</tr>
+				</thead>
+				<tbody>
+				
+					<tr>
+						<td><input type="checkbox" id="checkmain" name="cID" value="4"></td>
+						<td>2020年07月16日</td>
+						<td>好用</td>
+						<td>1</td>
+						<td>44</td>
+						<td>16</td>
+					</tr>
+				
+					<tr>
+						<td><input type="checkbox" id="checkmain" name="cID" value="5"></td>
+						<td>2020年07月16日</td>
+						<td>手机真的好用</td>
+						<td>1</td>
+						<td>45</td>
+						<td>19</td>
+					</tr>
+				
+					<tr>
+						<td><input type="checkbox" id="checkmain" name="cID" value="6"></td>
+						<td>2020年07月17日</td>
+						<td></td>
+						<td>1</td>
+						<td>45</td>
+						<td>8</td>
+					</tr>
+				
+				
+					
+				</tbody>
+			</table>
+			<input type="button" value="删除评论" class="btn btn-outline-danger" style="margin-left: 500px;margin-top: 30px;" onclick="del()">
+			</form>
+		</div>
+
+</body></html>

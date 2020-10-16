@@ -1,0 +1,163 @@
+{
+  "id": "1909170",
+  "name": "Fate-GO",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2116281",
+      "name": "喜欢",
+      "font_class": "love_icon",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "2680321",
+      "name": "位置",
+      "font_class": "weizhi",
+      "unicode": "e6f8",
+      "unicode_decimal": 59128
+    },
+    {
+      "icon_id": "3248584",
+      "name": "对",
+      "font_class": "dui",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "8106214",
+      "name": "addto",
+      "font_class": "addto",
+      "unicode": "e698",
+      "unicode_decimal": 59032
+    },
+    {
+      "icon_id": "8106288",
+      "name": "nickname",
+      "font_class": "nickname",
+      "unicode": "e6a0",
+      "unicode_decimal": 59040
+    },
+    {
+      "icon_id": "10678422",
+      "name": "info personal",
+      "font_class": "infopersonal",
+      "unicode": "e6de",
+      "unicode_decimal": 59102
+    },
+    {
+      "icon_id": "10678426",
+      "name": "message",
+      "font_class": "message",
+      "unicode": "e6df",
+      "unicode_decimal": 59103
+    },
+    {
+      "icon_id": "10678432",
+      "name": "group ctrl",
+      "font_class": "groupctrl",
+      "unicode": "e6e0",
+      "unicode_decimal": 59104
+    },
+    {
+      "icon_id": "12865651",
+      "name": "cart",
+      "font_class": "cart",
+      "unicode": "e6e6",
+      "unicode_decimal": 59110
+    },
+    {
+      "icon_id": "12865680",
+      "name": "menu",
+      "font_class": "menu",
+      "unicode": "e6ec",
+      "unicode_decimal": 59116
+    },
+    {
+      "icon_id": "12865693",
+      "name": "setting",
+      "font_class": "setting",
+      "unicode": "e6f0",
+      "unicode_decimal": 59120
+    },
+    {
+      "icon_id": "10678401",
+      "name": "back",
+      "font_class": "back",
+      "unicode": "e6db",
+      "unicode_decimal": 59099
+    },
+    {
+      "icon_id": "2668395",
+      "name": "修改",
+      "font_class": "xiugai",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    },
+    {
+      "icon_id": "8106272",
+      "name": "next",
+      "font_class": "next",
+      "unicode": "e6a2",
+      "unicode_decimal": 59042
+    },
+    {
+      "icon_id": "10678407",
+      "name": "close",
+      "font_class": "close",
+      "unicode": "e6dc",
+      "unicode_decimal": 59100
+    },
+    {
+      "icon_id": "49690",
+      "name": "卡片",
+      "font_class": "12",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "1667289",
+      "name": "手机",
+      "font_class": "shouji",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "4402180",
+      "name": "名片",
+      "font_class": "mingpian",
+      "unicode": "e654",
+      "unicode_decimal": 58964
+    },
+    {
+      "icon_id": "10487556",
+      "name": "礼物",
+      "font_class": "liwu",
+      "unicode": "e697",
+      "unicode_decimal": 59031
+    },
+    {
+      "icon_id": "10885304",
+      "name": "转换",
+      "font_class": "zhuanhuan",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "15323496",
+      "name": "F_round_字母f",
+      "font_class": "F_round",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "400020",
+      "name": "主页",
+      "font_class": "htmal5icon06",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    }
+  ]
+}
