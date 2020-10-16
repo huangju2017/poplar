@@ -12,8 +12,8 @@ public class Review implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer reviewId ;        //评论id
-	private Customer customer ;       //关联用户表，谁评论的
-	private Goods goods ;             //关联商品表 评论的哪个商品
+	private Integer customerId ;       //关联用户表，谁评论的
+	private Integer goodsId ;             //关联商品表 评论的哪个商品
 	private String reviewContent ;    //评论内容
 	private Date   reviwDate ;        //评论时间
 	
@@ -23,20 +23,13 @@ public class Review implements Serializable{
 	}
 
 
-	public Review(Integer reviewId, Customer customer, Goods goods, String reviewContent, Date reviwDate) {
+	public Review(Integer reviewId, Integer customerId, Integer goodsId, String reviewContent, Date reviwDate) {
 		super();
 		this.reviewId = reviewId;
-		this.customer = customer;
-		this.goods = goods;
+		this.customerId = customerId;
+		this.goodsId = goodsId;
 		this.reviewContent = reviewContent;
 		this.reviwDate = reviwDate;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Review [reviewId=" + reviewId + ", customer=" + customer + ", goods=" + goods + ", reviewContent="
-				+ reviewContent + ", reviwDate=" + reviwDate + "]";
 	}
 
 
@@ -50,23 +43,23 @@ public class Review implements Serializable{
 	}
 
 
-	public Customer getCustomer() {
-		return customer;
+	public Integer getCustomerId() {
+		return customerId;
 	}
 
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
 	}
 
 
-	public Goods getGoods() {
-		return goods;
+	public Integer getGoodsId() {
+		return goodsId;
 	}
 
 
-	public void setGoods(Goods goods) {
-		this.goods = goods;
+	public void setGoodsId(Integer goodsId) {
+		this.goodsId = goodsId;
 	}
 
 
@@ -94,8 +87,8 @@ public class Review implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
-		result = prime * result + ((goods == null) ? 0 : goods.hashCode());
+		result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
+		result = prime * result + ((goodsId == null) ? 0 : goodsId.hashCode());
 		result = prime * result + ((reviewContent == null) ? 0 : reviewContent.hashCode());
 		result = prime * result + ((reviewId == null) ? 0 : reviewId.hashCode());
 		result = prime * result + ((reviwDate == null) ? 0 : reviwDate.hashCode());
@@ -112,15 +105,15 @@ public class Review implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Review other = (Review) obj;
-		if (customer == null) {
-			if (other.customer != null)
+		if (customerId == null) {
+			if (other.customerId != null)
 				return false;
-		} else if (!customer.equals(other.customer))
+		} else if (!customerId.equals(other.customerId))
 			return false;
-		if (goods == null) {
-			if (other.goods != null)
+		if (goodsId == null) {
+			if (other.goodsId != null)
 				return false;
-		} else if (!goods.equals(other.goods))
+		} else if (!goodsId.equals(other.goodsId))
 			return false;
 		if (reviewContent == null) {
 			if (other.reviewContent != null)
@@ -139,6 +132,15 @@ public class Review implements Serializable{
 			return false;
 		return true;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Review [reviewId=" + reviewId + ", customerId=" + customerId + ", goodsId=" + goodsId
+				+ ", reviewContent=" + reviewContent + ", reviwDate=" + reviwDate + "]";
+	}
+
+    
 	
 	
 

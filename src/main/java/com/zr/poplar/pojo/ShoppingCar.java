@@ -11,25 +11,25 @@ public class ShoppingCar implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer shoppingCarId ;       //购物车id
-	private Goods goods ;                 //关联的商品
-	private Customer customer ;           //关联的用户
+	private Integer goodsId ;                 //关联的商品
+	private Integer customerId ;           //关联的用户
 	private Integer shoppingcarSum ;     //购物车商品数量
 	private Double  sumGoodsnumber ;     //商品商品小计
-	private  Orderform orderform;        //关联的订单表，订单编号
+	private Integer orderId;        //关联的订单表，订单编号
 	
 	public ShoppingCar() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ShoppingCar(Integer shoppingCarId, Goods goods, Customer customer, Integer shoppingcarSum,
-			Double sumGoodsnumber, Orderform orderform) {
+	public ShoppingCar(Integer shoppingCarId, Integer goodsId, Integer customerId, Integer shoppingcarSum,
+			Double sumGoodsnumber, Integer orderId) {
 		super();
 		this.shoppingCarId = shoppingCarId;
-		this.goods = goods;
-		this.customer = customer;
+		this.goodsId = goodsId;
+		this.customerId = customerId;
 		this.shoppingcarSum = shoppingcarSum;
 		this.sumGoodsnumber = sumGoodsnumber;
-		this.orderform = orderform;
+		this.orderId = orderId;
 	}
 
 	public Integer getShoppingCarId() {
@@ -40,20 +40,20 @@ public class ShoppingCar implements Serializable{
 		this.shoppingCarId = shoppingCarId;
 	}
 
-	public Goods getGoods() {
-		return goods;
+	public Integer getGoodsId() {
+		return goodsId;
 	}
 
-	public void setGoods(Goods goods) {
-		this.goods = goods;
+	public void setGoodsId(Integer goodsId) {
+		this.goodsId = goodsId;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public Integer getCustomerId() {
+		return customerId;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
 	}
 
 	public Integer getShoppingcarSum() {
@@ -72,21 +72,21 @@ public class ShoppingCar implements Serializable{
 		this.sumGoodsnumber = sumGoodsnumber;
 	}
 
-	public Orderform getOrderform() {
-		return orderform;
+	public Integer getOrderId() {
+		return orderId;
 	}
 
-	public void setOrderform(Orderform orderform) {
-		this.orderform = orderform;
+	public void setOrderId(Integer orderId) {
+		this.orderId = orderId;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
-		result = prime * result + ((goods == null) ? 0 : goods.hashCode());
-		result = prime * result + ((orderform == null) ? 0 : orderform.hashCode());
+		result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
+		result = prime * result + ((goodsId == null) ? 0 : goodsId.hashCode());
+		result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
 		result = prime * result + ((shoppingCarId == null) ? 0 : shoppingCarId.hashCode());
 		result = prime * result + ((shoppingcarSum == null) ? 0 : shoppingcarSum.hashCode());
 		result = prime * result + ((sumGoodsnumber == null) ? 0 : sumGoodsnumber.hashCode());
@@ -102,20 +102,20 @@ public class ShoppingCar implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		ShoppingCar other = (ShoppingCar) obj;
-		if (customer == null) {
-			if (other.customer != null)
+		if (customerId == null) {
+			if (other.customerId != null)
 				return false;
-		} else if (!customer.equals(other.customer))
+		} else if (!customerId.equals(other.customerId))
 			return false;
-		if (goods == null) {
-			if (other.goods != null)
+		if (goodsId == null) {
+			if (other.goodsId != null)
 				return false;
-		} else if (!goods.equals(other.goods))
+		} else if (!goodsId.equals(other.goodsId))
 			return false;
-		if (orderform == null) {
-			if (other.orderform != null)
+		if (orderId == null) {
+			if (other.orderId != null)
 				return false;
-		} else if (!orderform.equals(other.orderform))
+		} else if (!orderId.equals(other.orderId))
 			return false;
 		if (shoppingCarId == null) {
 			if (other.shoppingCarId != null)
@@ -137,10 +137,11 @@ public class ShoppingCar implements Serializable{
 
 	@Override
 	public String toString() {
-		return "ShoppingCar [shoppingCarId=" + shoppingCarId + ", goods=" + goods + ", customer=" + customer
-				+ ", shoppingcarSum=" + shoppingcarSum + ", sumGoodsnumber=" + sumGoodsnumber + ", orderform="
-				+ orderform + "]";
+		return "ShoppingCar [shoppingCarId=" + shoppingCarId + ", goodsId=" + goodsId + ", customerId=" + customerId
+				+ ", shoppingcarSum=" + shoppingcarSum + ", sumGoodsnumber=" + sumGoodsnumber + ", orderId=" + orderId
+				+ "]";
 	}
+
 	
 	
 

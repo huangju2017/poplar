@@ -15,8 +15,8 @@ public class Orderform implements Serializable{
 	private String  orderNumber ;       //订单编号
 	private Integer orderGoodsCount ;   //订单商品数量
 	private Double  totalPrice ;        //商品总价
-	private Customer customer ;         // 关联的用户表
-	private Goods   goods ;             // 关联的商品表
+	private Integer customerId ;         // 用户id
+	private Integer   goodsId ;             // 商品id
 	private String  payStatus ;         //支付状态
 	private Date    createTime ;        //成单时间
 	
@@ -24,26 +24,17 @@ public class Orderform implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Orderform(Integer orderId, String orderNumber, Integer orderGoodsCount, Double totalPrice, Customer customer,
-			Goods goods, String payStatus, Date createTime) {
+	public Orderform(Integer orderId, String orderNumber, Integer orderGoodsCount, Double totalPrice,
+			Integer customerId, Integer goodsId, String payStatus, Date createTime) {
 		super();
 		this.orderId = orderId;
 		this.orderNumber = orderNumber;
 		this.orderGoodsCount = orderGoodsCount;
 		this.totalPrice = totalPrice;
-		this.customer = customer;
-		this.goods = goods;
+		this.customerId = customerId;
+		this.goodsId = goodsId;
 		this.payStatus = payStatus;
 		this.createTime = createTime;
-	}
-	
-	
-
-	@Override
-	public String toString() {
-		return "Orderform [orderId=" + orderId + ", orderNumber=" + orderNumber + ", orderGoodsCount=" + orderGoodsCount
-				+ ", totalPrice=" + totalPrice + ", customer=" + customer + ", goods=" + goods + ", payStatus="
-				+ payStatus + ", createTime=" + createTime + "]";
 	}
 
 	public Integer getOrderId() {
@@ -78,20 +69,20 @@ public class Orderform implements Serializable{
 		this.totalPrice = totalPrice;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public Integer getCustomerId() {
+		return customerId;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
 	}
 
-	public Goods getGoods() {
-		return goods;
+	public Integer getGoodsId() {
+		return goodsId;
 	}
 
-	public void setGoods(Goods goods) {
-		this.goods = goods;
+	public void setGoodsId(Integer goodsId) {
+		this.goodsId = goodsId;
 	}
 
 	public String getPayStatus() {
@@ -110,13 +101,17 @@ public class Orderform implements Serializable{
 		this.createTime = createTime;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((createTime == null) ? 0 : createTime.hashCode());
-		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
-		result = prime * result + ((goods == null) ? 0 : goods.hashCode());
+		result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
+		result = prime * result + ((goodsId == null) ? 0 : goodsId.hashCode());
 		result = prime * result + ((orderGoodsCount == null) ? 0 : orderGoodsCount.hashCode());
 		result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
 		result = prime * result + ((orderNumber == null) ? 0 : orderNumber.hashCode());
@@ -139,15 +134,15 @@ public class Orderform implements Serializable{
 				return false;
 		} else if (!createTime.equals(other.createTime))
 			return false;
-		if (customer == null) {
-			if (other.customer != null)
+		if (customerId == null) {
+			if (other.customerId != null)
 				return false;
-		} else if (!customer.equals(other.customer))
+		} else if (!customerId.equals(other.customerId))
 			return false;
-		if (goods == null) {
-			if (other.goods != null)
+		if (goodsId == null) {
+			if (other.goodsId != null)
 				return false;
-		} else if (!goods.equals(other.goods))
+		} else if (!goodsId.equals(other.goodsId))
 			return false;
 		if (orderGoodsCount == null) {
 			if (other.orderGoodsCount != null)
@@ -176,6 +171,15 @@ public class Orderform implements Serializable{
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Orderform [orderId=" + orderId + ", orderNumber=" + orderNumber + ", orderGoodsCount=" + orderGoodsCount
+				+ ", totalPrice=" + totalPrice + ", customerId=" + customerId + ", goodsId=" + goodsId + ", payStatus="
+				+ payStatus + ", createTime=" + createTime + "]";
+	}
+
+	
 	
 	
 
