@@ -30,7 +30,7 @@ public class TestServlet {
 		System.out.println(dao.showAllEmp());
 
 		// 添加数据 
-		dao.addEmp(new Emp(null,10010,"黄榉","123"));
+		dao.addEmp(new Emp(null,"10010","黄榉","123"));
 
 		// 删除数据 
 		dao.deleteEmp("5");

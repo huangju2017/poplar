@@ -88,7 +88,7 @@ xhr.send("registEmail="+registEmail);
 		<div class="topBar">
 			<div class="container">
 				<div class="topBar_list">
-					<a href="http://127.0.0.1:8080/YiYi/index.html">易易商城</a>
+					<a href="http://localhost:8080/poplar/">易易商城</a>
 					<span>|</span>
 					<a href="http://127.0.0.1:8080/YiYi/#">云服务</a>
 					<span>|</span>

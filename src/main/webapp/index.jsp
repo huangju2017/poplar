@@ -8,7 +8,7 @@
 
 		<!--<base href="">-->
 		<base href=".">
-		<title>白杨科技</title>
+		<title>白杨商城</title>
 
 
 
@@ -42,7 +42,7 @@
 		<div class="topBar">
 			<div class="container">
 				<div class="topBar_list">
-					<a class="navbar-brand agileinfo" href="index.html">白杨 服饰</a>
+					<a class="navbar-brand agileinfo" href="index.html">白杨商城</a>
 					<span>|</span>
 					<a href="#">云服务</a>
 					<span>|</span>

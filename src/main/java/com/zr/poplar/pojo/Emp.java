@@ -11,7 +11,7 @@ public class Emp implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer empId ;       //员工id
-	private Integer  empNumber ;   //员工编号
+	private String  empNumber ;   //员工编号
 	private String empName ;     //员工账号
 	private String empPassword ; //账号密码
 	
@@ -19,7 +19,7 @@ public class Emp implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Emp(Integer empId, Integer empNumber, String empName, String empPassword) {
+	public Emp(Integer empId, String empNumber, String empName, String empPassword) {
 		super();
 		this.empId = empId;
 		this.empNumber = empNumber;
@@ -35,11 +35,11 @@ public class Emp implements Serializable{
 		this.empId = empId;
 	}
 
-	public Integer getEmpNumber() {
+	public String getEmpNumber() {
 		return empNumber;
 	}
 
-	public void setEmpNumber(Integer empNumber) {
+	public void setEmpNumber(String empNumber) {
 		this.empNumber = empNumber;
 	}
 

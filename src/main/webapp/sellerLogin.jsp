@@ -42,7 +42,7 @@ h2{
 		<div class="topBar">
 			<div class="container">
 				<div class="topBar_list">
-					<a href="index.html">易易商城</a>
+					<a href="http://localhost:8080/poplar/">白杨商城</a>
 					<span>|</span>
 					<a href="#">云服务</a>
 					<span>|</span>
@@ -52,7 +52,7 @@ h2{
 					<span>|</span>
 					<a href="#">Merchant OS</a>
 					<span>|</span>
-					<a href="OA_adminLogin.html">Admin OS</a>
+					<a href="http://localhost:8080/poplar/OA_adminLogin.jsp">Admin OS</a>
 					<span>|</span>
 				</div>
 				<div class="shop">

@@ -96,20 +96,28 @@
 		<thead>
 			<tr>
 				<th>序号</th>
-				<th>员工编号</th>
-				<th>员工姓名</th>
+				<th>会员姓名</th>
 				<th>密码</th>
+				<th>性别</th>
+				<th>年龄</th>
+				<th>电话号码</th>
+				<th>地址</th>
+				<th>邮箱</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${emp1}" var="u" begin="0" step="1" varStatus="vs">
 				<tr>
-					<td>${u.empId }</td>
-					<td>${u.empNumber }</td>
-					<td>${u.empName }</td>
-					<td>${u.empPassword }</td>
+					<td>${u.customerId }</td>
+					<td>${u.customerName }</td>
+					<td>${u.password }</td>
+					<td>${u.gender }</td>
+					<td>${u.age }</td>
+					<td>${u.phone }</td>
+					<td>${u.address }</td>
+					<td>${u.email }</td>
 					<td>
-						<a href="${pageContext.request.contextPath }/empServlet?cmd=deleteEmp&id=${u.empId}" class="btn btn-danger">删除</a>
+						<a href="${pageContext.request.contextPath }/empServlet?cmd=deleteEmp&id=${u.customerId}" class="btn btn-danger">删除</a>
 					</td>
 				</tr>
 			</c:forEach>

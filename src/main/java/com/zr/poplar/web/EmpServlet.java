@@ -20,7 +20,7 @@ import com.zr.poplar.service.impl.EmpService;
 public class EmpServlet extends HttpServlet{
 	
 	/**
-	 * UserServicr方法
+	 * 实现UserServicr类
 	 */
 	IEmpService emp = new EmpService();
 
@@ -45,6 +45,9 @@ public class EmpServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		/**
+		 * 编码格式
+		 */
 		req.setCharacterEncoding(encoding);
 		resp.setCharacterEncoding(encoding);
 		resp.setContentType("text/html;charset=" + encoding);
@@ -80,7 +83,6 @@ public class EmpServlet extends HttpServlet{
 		}
 			req.getSession().setAttribute("emp", login);
 			showAllEmp(req, resp);
-			System.out.println(login);
 			req.getRequestDispatcher("/OA_YiYi_index.jsp").forward(req, resp);
 		
 	}

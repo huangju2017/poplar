@@ -42,7 +42,7 @@ h2{
 		<div class="topBar">
 			<div class="container">
 				<div class="topBar_list">
-					<a href="index.html">白杨商城</a>
+					<a href="http://localhost:8080/poplar/">白杨商城</a>
 					<span>|</span>
 					<a href="#">云服务</a>
 					<span>|</span>
@@ -50,9 +50,9 @@ h2{
 					<span>|</span>
 					<a href="#">资质证照</a>
 					<span>|</span>
-					<a href="#">Merchant OS</a>
+					<a href="http://localhost:8080/poplar/sellerLogin.jsp">Merchant OS</a>
 					<span>|</span>
-					<a href="OA_adminLogin.html">Admin OS</a>
+					<a href="#">Admin OS</a>
 					<span>|</span>
 				</div>
 				<div class="shop">
@@ -102,15 +102,15 @@ h2{
 		</div>
 		<!--主页内容-->
 		<div class="formdiv" style="background-image: url(images/timg.jpg);background-repeat: no-repeat;">
-			<form method="post" action="#" >
+			<form method="post" action="${pageContext.request.contextPath }/rootServlet?cmd=rootLogin" >
 		<div class="control"  style="margin-top: 130px; background-color: rgba(167, 199, 221, 0.7);">
 				
 			<div class="content">
 				<div style="display: block;">
 					<p>邮箱</p>
-					<input type="text" placeholder="Email" name="loginEmail" id="loginEmail">
+					<input type="text" placeholder="rootName" name="rootName" id="rootName">
 					<p>密码:</p>
-					<input type="password" placeholder="Password" name="loginPassword" id="loginPassword">
+					<input type="password" placeholder="rootPassword" name="rootPassword" id="rootPassword">
 					<p class="error"></p>
 					<p class="register text-tips"><input type="checkbox" name="isAuto" value="1">下次自动登录</p>
 					<!-- <a href="userinfo.html">登录</a>
