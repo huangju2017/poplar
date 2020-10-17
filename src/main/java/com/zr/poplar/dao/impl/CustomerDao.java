@@ -1,9 +1,14 @@
 package com.zr.poplar.dao.impl;
 
+import java.sql.SQLException;
 import java.util.List;
+
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 
 import com.zr.poplar.dao.ICustomerDao;
 import com.zr.poplar.pojo.Customer;
+import com.zr.poplar.util.TxDBUtils;
 
 /**
  * 用户实现类
@@ -17,7 +22,18 @@ public class CustomerDao implements ICustomerDao {
 	 */
 	@Override
 	public Boolean register(Customer customer) {
-		return null;
+		String sql="insert into customer values(null,?,?,?,?,?,?,?)";
+		try {
+			QueryRunner runner = new QueryRunner(TxDBUtils.getSource());
+			int line = runner.update(sql, customer.getCustomerName(),customer.getPassword(),customer.getGendar(),customer.getAge(),customer.getPhone(),customer.getAddress(),customer.getEmail());
+			if (line > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			System.out.println("用户注册dao报错");
+//			e.printStackTrace();
+		}
+		return false;
 	}
 	
 	/**
@@ -25,7 +41,21 @@ public class CustomerDao implements ICustomerDao {
 	 */
 	@Override
 	public Customer login(String email, String password) {
+		String sql="select * from customer where email =? and password =?";
+		QueryRunner runner = new QueryRunner(TxDBUtils.getSource());
+		try {
+			Customer query = runner.query(sql, new BeanHandler<Customer>(Customer.class),email,password);
+			System.out.println("query:"+query);
+			if (query!=null) {
+				
+				return query;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
+		
 	}
 	
 	/**
@@ -33,9 +63,19 @@ public class CustomerDao implements ICustomerDao {
 	 * @return 
 	 */
 	@Override
-	public Boolean changeInfor(Customer customer) {
-		return null;
-
+	public boolean changeInfor(Customer customer) {
+		String sql="update customer set  customerName=?,password=?,gendar=?,age=?,phone=?,address=?,email=? where customerId=?";
+		try {
+			QueryRunner runner = new QueryRunner(TxDBUtils.getSource());
+			int line = runner.update(sql, customer.getCustomerName(),customer.getPassword(),customer.getGendar(),customer.getAge(),customer.getPhone(),customer.getAddress(),customer.getEmail(),customer.getCustomerId());
+			if (line > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			System.out.println("用户注册dao报错");
+//			e.printStackTrace();
+		}
+		return false;
 	}
 	
 	/**

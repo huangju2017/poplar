@@ -72,7 +72,7 @@
 					<span>|</span>
 					<a href="${pageContext.request.contextPath }/userRegist.jsp">注册</a>
 					<span>|</span>
-					<a href="#">消息通知</a>
+					<a href="http://localhost:8080/poplar/userinfo.jsp">个人中心</a>
 				</div>
 
 

@@ -128,14 +128,14 @@ xhr.send("registEmail="+registEmail);
 		
 		<!--主页内容-->
 		<div class="formdiv" style="background-image: url(images/timg.jpg);background-repeat: no-repeat;">
-			<form method="post" action="#" >
+			<form method="post" action="${pageContext.request.contextPath }/customerServlet?cmd=register" >
 		<div class="control"  style="margin-top: 110px; background-color: rgba(167, 199, 221, 0.7);">
 				
 			<div class="content" >
 				<div style="display: block;">
 					
 					<p>账号:</p>
-					<input type="text" placeholder="Username" name="registName" id="registName">
+					<input type="text" placeholder="registName" name="registName" id="registName">
 					<p>密码:</p>
 					<input type="password" placeholder="Password" name="registPassword" id="registPassword">
 					<p>邮箱</p>

@@ -24,7 +24,7 @@ public interface ICustomerService {
 	 * 编辑个人资料（根据用户ID修改）
 	 * @param customer
 	 */
-	void changeInfor(Customer customer);
+	boolean changeInfor(Customer customer);
 	
 	/**
 	 * 显示所有客户

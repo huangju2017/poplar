@@ -14,7 +14,7 @@ public class Customer implements Serializable{
 	private Integer customerId ;     //用户id
 	private String  customerName ;   //昵称
 	private String  password ;       //密码
-	private String  gender ;         //性别
+	private String  gendar ;         //性别
 	private Integer age ;            //年龄
 	private String  phone ;          //电话号码
 	private String  address ;        //地址
@@ -37,11 +37,12 @@ public class Customer implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getGender() {
-		return gender;
+	
+	public String getGendar() {
+		return gendar;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setGendar(String gendar) {
+		this.gendar = gendar;
 	}
 	public Integer getAge() {
 		return age;
@@ -79,7 +80,7 @@ public class Customer implements Serializable{
 		result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
 		result = prime * result + ((customerName == null) ? 0 : customerName.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
+		result = prime * result + ((gendar == null) ? 0 : gendar.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		return result;
@@ -118,10 +119,10 @@ public class Customer implements Serializable{
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (gender == null) {
-			if (other.gender != null)
+		if (gendar == null) {
+			if (other.gendar != null)
 				return false;
-		} else if (!gender.equals(other.gender))
+		} else if (!gendar.equals(other.gendar))
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -144,7 +145,7 @@ public class Customer implements Serializable{
 		this.customerId = customerId;
 		this.customerName = customerName;
 		this.password = password;
-		this.gender = gender;
+		this.gendar = gender;
 		this.age = age;
 		this.phone = phone;
 		this.address = address;
@@ -153,7 +154,7 @@ public class Customer implements Serializable{
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", password=" + password
-				+ ", gender=" + gender + ", age=" + age + ", phone=" + phone + ", address=" + address + ", email="
+				+ ", gendar=" + gendar + ", age=" + age + ", phone=" + phone + ", address=" + address + ", email="
 				+ email + "]";
 	}
 	

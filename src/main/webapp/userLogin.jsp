@@ -76,7 +76,7 @@ h2{
 						<a class="tit" href="">用户</a>
 						<ul>
 							<li>
-								<a href="userinfo.html">个人中心</a>
+								<a href="userinfo.jsp">个人中心</a>
 							</li>
 							<li>
 								<a href="">晒单评价</a>
@@ -102,7 +102,7 @@ h2{
 		</div>
 		<!--主页内容-->
 		<div class="formdiv" style="background-image: url(images/timg.jpg);background-repeat: no-repeat;">
-			<form method="post" action="#" >
+			<form method="post" action="${pageContext.request.contextPath }/customerServlet?cmd=login" >
 		<div class="control"  style="margin-top: 130px; background-color: rgba(167, 199, 221, 0.7);">
 				
 			<div class="content">
