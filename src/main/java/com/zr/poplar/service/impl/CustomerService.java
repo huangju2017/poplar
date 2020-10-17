@@ -34,8 +34,8 @@ public class CustomerService implements ICustomerService {
 	 * 编辑个人资料（根据用户ID修改）
 	 */
 	@Override
-	public void changeInfor(Customer customer) {
-		dao.changeInfor(customer);
+	public boolean changeInfor(Customer customer) {
+		return dao.changeInfor(customer);
 	}
 	
 	/**

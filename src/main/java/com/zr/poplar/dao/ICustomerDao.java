@@ -29,7 +29,7 @@ public interface ICustomerDao {
 	 * 编辑个人资料（根据用户ID修改）
 	 * @param customer
 	 */
-	Boolean changeInfor(Customer customer);
+	boolean changeInfor(Customer customer);
 	
 	/**
 	 * 显示所有客户
