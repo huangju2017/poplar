@@ -32,17 +32,30 @@ public interface IGoodsDao {
 	List<Goods> showAllGoods();
 	
 	/**
-	 * 根据商品类型查找商品
+	 * 根据商品名称查找商品
 	 * @param findGoodsByType
 	 * @return
 	 */
-	List<Goods> findGoodsByType(String goodsType);
+	List<Goods> findGoodsByName(String goodsName);
 	
 	/**
 	 * 根据id修改商品信息
-	 * @param id
 	 * @return
 	 */
-	Goods changeGoods(Integer id);
+	Boolean changeGoods(Goods goods);
+
+	/**
+	 * 商品上架或下架
+	 */
+	Boolean lowerOrUpper(String status, Integer id);
+
+	/**
+	 * 根据id获取该商品信息
+	 * @param goodsId
+	 * @return
+	 */
+	Goods productpage(Integer goodsId);
+
+	List<Goods> showSort(String goodsType);
 	
 }

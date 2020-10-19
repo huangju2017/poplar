@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <!-- saved from url=(0038)MyOrder.html -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,6 +14,28 @@
 <link rel="stylesheet" type="text/css" href="./MyOrder_files/productpage.css">
 <link rel="stylesheet" type="text/css" href="./MyOrder_files/dd.css">
 <script src="./MyOrder_files/jquery-3.5.1.min.js.下载" type="text/javascript" charset="utf-8"></script>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link
+	href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script
+	src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+<style type="text/css">
+body {
+	text-align: center;
+}
+
+table thead tr th,table tbody tr td{
+    text-align: center;
+}
+
+</style>	
 
 <script type="text/javascript">
 
@@ -74,6 +97,18 @@
 		});
 	}
 </script>
+<script type="text/javascript">
+	
+	function delFun(orderId){
+		var flag = confirm("是否确定删除该订单");
+		if (flag) {
+			//跳转页面
+			location.href = "${pageContext.request.contextPath }/orderServlet?cmd=delOrder&orderId="+orderId;
+		}
+	}
+	
+	
+</script>
 </head>
 <body>
 
@@ -81,7 +116,7 @@
 	<div class="topBar">
 		<div class="container">
 			<div class="topBar_list">
-				<a href="index.html">易易商城</a> <span>|</span> <a href="#">云服务</a> <span>|</span>
+				<a href="index.html">白杨商城</a> <span>|</span> <a href="#">云服务</a> <span>|</span>
 				<a href="#">金融</a> <span>|</span> <a href="#">资质证照</a> <span>|</span>
 				<a href="#">Merchant OS</a> <span>|</span> <a href="OA_adminLogin.html">Admin OS</a> <span>|</span>
 			</div>
@@ -99,14 +134,14 @@
 						</span>
 					</div>
 					<ul id="personal">
-						<li><a href="userinfo.html">个人中心</a></li>
+						<li><a href="userinfo.jsp">个人中心</a></li>
 						<li><a href="">晒单评价</a></li>
 						<li><a href="">我的喜欢</a></li>
 						<li><a href="">账户安全</a></li>
 						<li><a href="servlet/user/logout">退出登录</a></li>
 					</ul>
 				</div>
-				<a class="link" href="">消息通知</a> <span>|</span> <a class="link" href="">我的订单</a> <span>|</span>
+				<a class="link" href="">消息通知</a> <span>|</span> <a class="link" href="${pageContext.request.contextPath }/orderServlet?cmd=queryAllOrder">我的订单</a> <span>|</span>
 			</div>
 			
 
@@ -116,7 +151,7 @@
 	<!-- 导航栏 -->
 	<h1 style="text-align: center;margin-top: 20px">我的订单</h1>
 	<div class="box">
-		<table border="0" cellspacing="1" cellpadding="10">
+		<!-- <table border="0" cellspacing="1" cellpadding="10">
 			<thead>
 			<tr>
 				<th>订单编号</th>
@@ -132,6 +167,39 @@
 			<tbody id="tab">
 			<tr><td>B7C2392C1193427394EBB5332A48F1BB-</td><td>2020-07-17 04:26:52.0</td><td>iphonex</td><td>2999</td><td>1</td><td>2999</td><td>未支付</td><td>未发货</td></tr><tr><td>B152A5380C0148A39D44A54DA6613FB3-</td><td>2020-07-17 04:31:35.0</td><td>电脑戴尔m6500</td><td>4000</td><td>1</td><td>4000</td><td>未支付</td><td>未发货</td></tr></tbody>
 		
+		</table> -->
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+			
+					<th>订单编号</th>
+					<th>商品名称</th>
+					<th>商品单价</th>
+					<th>商品数量</th>
+					<th>支付状态</th>
+					<th>成交时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+			      
+			      <c:forEach items="${myorders }" var="Order" begin="0" step="1" varStatus="vs">
+			           <tr>
+			           
+			               <td>${Order.orderNumber }</td>
+			               <td>${Order.goodsName }</td>
+			               <td>${Order.goodsPrice }</td>
+			               <td>${Order.orderGoodsCount}</td>
+			               <td>${Order.payStatus }</td>
+			               <td>${ Order.createTime }</td>
+			               <td>
+                                
+                               <a href="javascript:delFun(${Order.orderId}) " class="btn btn-danger"  >删除</a> 
+                           </td>
+			           </tr>
+			      </c:forEach>
+				
+			</tbody>
 		</table>
 	</div>
 	<!-- 脚部 -->

@@ -1,13 +1,15 @@
 $(document).ready(function () {
 	
         $(".shop a").on("click",function(){                
-            
-            $.post("servlet/productpage/shoppingCartVerification", function(data) {
+        	
+            $.post("shoppingcarServlet?cmd=showShoppingCarValidate", function(data) {
             	//转换成JSON对象
+            	alert("jjj");
             	var json = JSON.parse(data);
-            	//alert(json.success);
+/*            	alert("shopc:"+${showShoppingCars});
+*/            	//alert(json.success);
             	if(json.success){
-            		window.location.href="servlet/productpage/orderitem"
+            		window.location.href="shoppingcarServlet?cmd=showShoppingCar";
             	}else{
             		alert("请先登录");
             	}

@@ -10,6 +10,7 @@ import com.zr.poplar.dao.IReviewDao;
 import com.zr.poplar.pojo.Emp;
 import com.zr.poplar.pojo.Goods;
 import com.zr.poplar.pojo.Review;
+import com.zr.poplar.pojo.ReviewExt;
 import com.zr.poplar.util.TxDBUtils;
 
 /**
@@ -63,11 +64,11 @@ public class ReviewDao implements IReviewDao{
 	 * 展示所有评论
 	 */
 	@Override
-	public List<Review> showAllReview() {
-		String sql = "select reviewContent,reviwDate from review";
+	public List<ReviewExt> showAllReview() {
+		String sql = "select r.reviewId,c.customerName,g.goodsName,r.reviewContent,r.reviwDate from review r,customer c,goods g WHERE r.customerId=c.customerId AND r.goodsId=g.goodsId";
 		
 		try {
-			return runner.query(sql, new BeanListHandler<Review>(Review.class));
+			return runner.query(sql, new BeanListHandler<ReviewExt>(ReviewExt.class));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

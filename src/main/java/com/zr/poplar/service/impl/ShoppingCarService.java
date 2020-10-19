@@ -5,6 +5,7 @@ import java.util.List;
 import com.zr.poplar.dao.IShoppingCarDao;
 import com.zr.poplar.dao.impl.ShoppingCarDao;
 import com.zr.poplar.pojo.ShoppingCar;
+import com.zr.poplar.pojo.ShoppingCarExt;
 import com.zr.poplar.service.IShoppingCarSevice;
 
 public class ShoppingCarService implements IShoppingCarSevice{
@@ -19,7 +20,7 @@ public class ShoppingCarService implements IShoppingCarSevice{
 	 */
 	@Override
 	public Boolean addShoppingCar(ShoppingCar shoppingcar) {
-		return null;
+		return dao.addShoppingCar(shoppingcar);
 	}
 	
 	/**
@@ -27,15 +28,15 @@ public class ShoppingCarService implements IShoppingCarSevice{
 	 */
 	@Override
 	public Boolean deleteShoppingCar(Integer id) {
-		return null;
+		return dao.deleteShoppingCar(id);
 	}
 	
 	/**
 	 * 显示所有数据
 	 */
 	@Override
-	public List<ShoppingCar> showShoppingCar(Integer customer_id) {
-		return null;
+	public List<ShoppingCarExt> showShoppingCar(Integer customer_id) {
+		return dao.showShoppingCar(customer_id);
 	}
 	
 	/**

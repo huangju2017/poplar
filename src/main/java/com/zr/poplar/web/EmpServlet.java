@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import com.zr.poplar.pojo.Customer;
 import com.zr.poplar.pojo.Emp;
+import com.zr.poplar.service.ICustomerService;
 import com.zr.poplar.service.IEmpService;
+import com.zr.poplar.service.impl.CustomerService;
 import com.zr.poplar.service.impl.EmpService;
 
 @SuppressWarnings("serial")
@@ -69,6 +71,7 @@ public class EmpServlet extends HttpServlet{
 		
 	}
 	
+
 	
 	private void empLogin(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String empNumber = req.getParameter("empNumber");
@@ -82,22 +85,23 @@ public class EmpServlet extends HttpServlet{
 			return;
 		}
 			req.getSession().setAttribute("emp", login);
-			showAllEmp(req, resp);
-			req.getRequestDispatcher("/OA_YiYi_index.jsp").forward(req, resp);
+//			showAllEmp(req, resp);O
+			req.getRequestDispatcher("/OA_goods_query.jsp").forward(req, resp);
 		
 	}
 
-	private void showAllEmp(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	private void showAllEmp(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		List<Emp> list = emp.showAllEmp();
 		req.setAttribute("emp1", list);
 		System.out.println(list);
+		req.getRequestDispatcher("/OA_YiYi_index.jsp").forward(req, resp);
 	}
 
 	private void deleteEmp(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		String id = req.getParameter("id");
 		emp.deleteEmp(id);
 		showAllEmp(req, resp);
-		req.getRequestDispatcher("/OA_YiYi_index.jsp").forward(req, resp);
+		
 	}
 
 

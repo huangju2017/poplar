@@ -46,7 +46,7 @@ function totalPrice(){
 				"sum": sum
 			};
 			
-			$.post("servlet/productpage/addShoppingCart",senData,function(data){
+			$.post("shoppingcarServlet?cmd=addShoppingCar",senData,function(data){
 				var json = JSON.parse(data);
 				if(json.success){
 					alert("该商品成功加入购物车");

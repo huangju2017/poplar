@@ -13,8 +13,8 @@
 		<link rel="stylesheet" type="text/css" href="./productpage_files/pinglun.css"> 
 		<link rel="stylesheet" type="text/css" href="./productpage_files/productpage.css">
 		<script src="./productpage_files/jquery-3.5.1.min.js.下载" type="text/javascript" charset="utf-8"></script>
-		<script src="./productpage_files/jjnumber.js.下载" type="text/javascript" charset="utf-8"></script>
-		<script src="./productpage_files/shoppingCartVerification1.js.下载" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jjnumber.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/shoppingCartVerification1.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 		$(function(){
 			$.post("servlet/comment/goodsComment",function(data){
@@ -47,7 +47,7 @@
 		$.post("servlet/comment/add",fromdata,function(data){
 			var json=JSON.parse(data);
 			if(json.success){
-				window.location.href = "productpage.html";
+				window.location.href = "productpage.jsp";
 			}
 			else{
 				alert("请先登录");
@@ -84,7 +84,7 @@
 		$.post("servlet/order/buyNow",{"goodsid":gid,"goodsname":gname,"goodsprice":gprice,"countnum":countnum},function(data){
 			var json = JSON.parse(data);
 			if(json.ok){
-				window.location.href = "Order.html";
+				window.location.href = "Order.jsp";
 			}
 		});
 	}
@@ -96,7 +96,7 @@
 		<div class="topBar">
 			<div class="container">
 				<div class="topBar_list">
-					<a href="index.html">易易商城</a>
+					<a href="index.jsp">易易商城</a>
 					<span>|</span>
 					<a href="http://127.0.0.1:8080/YiYi/#">云服务</a>
 					<span>|</span>
@@ -105,10 +105,10 @@
 					<a href="http://127.0.0.1:8080/YiYi/#">资质证照</a>
 					<span>|</span>
 			
-					<a href="http://127.0.0.1:8080/YiYi/sellerLogin.html">Merchant OS</a>
+					<a href="http://127.0.0.1:8080/YiYi/sellerLogin.jsp">Merchant OS</a>
 			
 					<span>|</span>
-					<a href="http://127.0.0.1:8080/YiYi/OA_adminLogin.html">Admin OS</a>
+					<a href="http://127.0.0.1:8080/YiYi/OA_adminLogin.jsp">Admin OS</a>
 					<span>|</span>
 				</div>
 				<div class="shop">
@@ -120,11 +120,11 @@
 
 				 游客登陆 
 				 <div class="login">
-				<a href="http://127.0.0.1:8080/YiYi/userLogin.html">登录</a>
+				<a href="${pageContext.request.contextPath }/userLogin.jsp">登录</a>
 				<span>|</span>
-				<a href="http://127.0.0.1:8080/YiYi/userRegist.html">注册</a>
+				<a href="${pageContext.request.contextPath }/userRegist.jsp">注册</a>
 				<span>|</span>
-				<a href="http://127.0.0.1:8080/YiYi/#">消息通知</a>
+				<a href="${pageContext.request.contextPath }/#">消息通知</a>
 				</div> 
 				
 
@@ -134,7 +134,7 @@
 		<div class="header">
 			<div class="container">
 				<div class="site-logo">
-					<a href="ndex.html">
+					<a href="index.jsp">
 						<img src="./productpage_files/yilogo.jpg">
 					</a>
 				</div>
@@ -198,18 +198,18 @@
 			<div class="box-abc">
 			
 				<div class="main-left">
-					<img class="" src="./productpage_files/sj5.jpg">
+					<img class="" src="${pageContext.request.contextPath}\image\/${productpage.goodsImg}">
 				</div>
 				<div class="main-rehit">
-					<div class="goods-tit">
-						<h2 id="gname">iphonex</h2>
-						<h2 hidden="hidden" id="gid">45</h2>
-						<p>9成新iphonex</p>
+				<div class="goods-tit">
+						<h2 id="gname">${productpage.goodsName}</h2>
+						<h2 hidden="hidden" id="gid">${productpage.goodsId}</h2>
+						<p>${g.goodsContent}</p>
 						<div class="goods-kc">
-							<span><a>商品库存</a><span class="kc">30</span>件</span>
+							<span><a>商品库存</a><span class="kc">${productpage.goodsNumber}</span>件</span>
 						</div>
 						<div class="goods-jg">
-							<span><a id="gprice">2999.0</a>元</span>
+							<span><a id="gprice">${productpage.goodsPrice}</a>元</span>
 						</div>
 					</div>
 					<hr>
@@ -238,13 +238,13 @@
 							<li id="plus"><input type="button" onclick="adder()" value="+"></li>
 						</ul>
 					</div>
-					<script src="./productpage_files/jjnumber.js.下载" type="text/javascript" charset="utf-8"></script>
+					<script src="js/jjnumber.js" type="text/javascript" charset="utf-8"></script>
 					<div class="good-price">
 						<span><a>共计：</a><a class="sum">2999.0</a>元</span>
 					</div>
 					<div class="gandc">
-						<a href="shoppingcar.html"><input type="button" class="jr" name="" id="" value="加入购物车" onclick="addorderitem()"></a>
-						<a href="Order.html"><input type="button" class="gm" name="" id="" value="立即购买" onclick="gm()"></a>
+						<input type="button" class="jr" name="" id="" value="加入购物车" onclick="addorderitem()">
+						<input type="button" class="gm" name="" id="" value="立即购买" onclick="gm()">
 					</div>
 				</div>
 				
@@ -258,7 +258,7 @@
 		<div class="comment-top">
 			<div class="bt" id="pingjia">
 				<span>商品评论</span>
-			<button onclick="javascript:document.getElementById(&#39;Comment&#39;).scrollIntoView()" style="margin-left: 85em ;width: 7em;height: 3em ;border-radius: 5px;">马上评论</button>
+			<!-- <button onclick="javascript:document.getElementById(&#39;Comment&#39;).scrollIntoView()" style="margin-left: 85em ;width: 7em;height: 3em ;border-radius: 5px;">马上评论</button> -->
 		 </div>
 		<div class="comment-tit">
 			<div class="tit">

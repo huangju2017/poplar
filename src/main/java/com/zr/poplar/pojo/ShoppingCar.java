@@ -1,28 +1,29 @@
 package com.zr.poplar.pojo;
 
 import java.io.Serializable;
+
 /**
  * 
  * 购物车实体类
  *
  */
-public class ShoppingCar implements Serializable{
-	
+public class ShoppingCar implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
-	private Integer shoppingCarId ;       //购物车id
-	private Integer goodsId ;                 //关联的商品
-	private Integer customerId ;           //关联的用户
-	private Integer shoppingcarSum ;     //购物车商品数量
-	private Double  sumGoodsnumber ;     //商品商品小计
-	private Integer orderId;        //关联的订单表，订单编号
-	
+
+	private Integer shoppingCarId; // 购物车id
+	private Integer goodsId; // 商品id
+	private Integer customerId; // 用户id
+	private Integer shoppingcarSum; // 购物车商品数量
+	private Double sumGoodsnumber; // 商品商品小计
+	private String orderId; // 订单id
+
 	public ShoppingCar() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public ShoppingCar(Integer shoppingCarId, Integer goodsId, Integer customerId, Integer shoppingcarSum,
-			Double sumGoodsnumber, Integer orderId) {
+			Double sumGoodsnumber, String orderId) {
 		super();
 		this.shoppingCarId = shoppingCarId;
 		this.goodsId = goodsId;
@@ -72,12 +73,16 @@ public class ShoppingCar implements Serializable{
 		this.sumGoodsnumber = sumGoodsnumber;
 	}
 
-	public Integer getOrderId() {
+	public String getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(Integer orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
@@ -141,8 +146,4 @@ public class ShoppingCar implements Serializable{
 				+ ", shoppingcarSum=" + shoppingcarSum + ", sumGoodsnumber=" + sumGoodsnumber + ", orderId=" + orderId
 				+ "]";
 	}
-
-	
-	
-
 }

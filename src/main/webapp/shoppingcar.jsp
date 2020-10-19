@@ -1,20 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html;charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<!-- saved from url=(0042)http://127.0.0.1:8080/YiYi/shoppingcar.jsp -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<!--<base href="http://127.0.0.1:8080/YiYi/">--><base href=".">
+<html>
+<head>
+<meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="./shoppingcar_files/reset.css">
-		<link rel="stylesheet" type="text/css" href="./shoppingcar_files/fonts.css">
-		<link rel="stylesheet" type="text/css" href="./shoppingcar_files/iconfont.css">
-		<link rel="stylesheet" type="text/css" href="./shoppingcar_files/index.css">
-		<link rel="stylesheet" type="text/css" href="./shoppingcar_files/reset2.css">
-		<link rel="stylesheet" type="text/css" href="./shoppingcar_files/indexx.css">
-		<script type="text/javascript" src="./shoppingcar_files/jquery-3.5.1.min.js.下载"></script>
-		<script type="text/javascript" src="./shoppingcar_files/car.js.下载"></script>
-		<script src="./shoppingcar_files/shoppingCartVerification1.js.下载" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/fonts.css">
+		<link rel="stylesheet" type="text/css" href="font2/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/reset2.css" />
+		<link rel="stylesheet" type="text/css" href="css/indexx.css" />
+		<script type="text/javascript" src="js/jquery-3.5.1.min.js" ></script>
+		<script type="text/javascript" src="js/car.js" ></script>
+		<script src="js/shoppingCartVerification1.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 	/**
 	 * 打开或关闭个人中心菜单
@@ -45,9 +45,12 @@
 			 total_price = 0;
 			$('.j-checkbox:checked').each(function(i,v){
 				var number = parseInt($(v).closest('.item-box').find('.goods-num').val());
+				//alert("number:"+number);
 				total_number += number;
+				//alert("total_name:"+total_number);
 				var row_price = parseFloat($(v).closest('.item-box').find('.car-total').html());
 				total_price += row_price;
+				//alert("total_price:"+total_price);
 
 			});
 			$('.amount-sum em').html(total_number);
@@ -66,20 +69,21 @@
 					var number = parseInt($(v).closest('.item-box').find('.goods-num').val());
 					total_number += number;
 					var row_price = parseFloat($(v).closest('.item-box').find('.car-total').html());
+					var shoppcarid=parseInt($(v).closest('.item-box').find('.j-checkbox').val());
 					total_price += row_price;
-					goods_name = $(this).parent().parent().children(".car-name").text();			
+					//goods_name = $(this).parent().parent().children(".car-name").text();			
 					goods_count = $(this).parent().parent().children(".change-goods-num").children(".goods-num").val();				
-					goods_price = $(this).parent().parent().children(".car-price").text();					
+					/* goods_price = $(this).parent().parent().children(".car-price").text();	 */				
 					goods_id = $(this).parent().parent().children(".car-goodsID").text();
-					orderlist.push({"goodsname":goods_name,"goodscount":goods_count,"goodsprice":goods_price,"goodsid":goods_id});			
+					orderlist.push({/* "goodsname":goods_name, */"goodscount":goods_count,/* "goodsprice":goods_price ,*/"total_price":total_price,"shoppingcar":shoppcarid,"goodsid":goods_id});			
 				}); 
 				 $('.amount-sum em').html(total_number);
 				total_price = total_price.toFixed(2);
 				
-				$.post("servlet/order/create",{"data":JSON.stringify(orderlist)},function(data){
+				$.post("orderServlet?cmd=addOrder",{"data":JSON.stringify(orderlist)},function(data){
 					var json = JSON.parse(data);
 					if(json.ok){
-						window.location.href = "Order.jsp";
+						window.location.href = "orderServlet?cmd=queryAllOrder";
 					}
 				});
 	}
@@ -89,48 +93,55 @@
 		<div class="topBar">
 			<div class="container">
 				<div class="topBar_list">
-					<a href="http://127.0.0.1:8080/YiYi/index.jsp">易易商城</a>
+					<a href="index.jsp">易易商城</a>
 					<span>|</span>
-					<a href="http://127.0.0.1:8080/YiYi/#">云服务</a>
+					<a href="#">云服务</a>
 					<span>|</span>
-					<a href="http://127.0.0.1:8080/YiYi/#">金融</a>
+					<a href="#">金融</a>
 					<span>|</span>					
-					<a href="http://127.0.0.1:8080/YiYi/#">资质证照</a>
+					<a href="#">资质证照</a>
 					<span>|</span>
 			
-					<a href="http://127.0.0.1:8080/YiYi/sellerLogin.jsp">Merchant OS</a>
+					<a href="OA_goods_query.jsp">Merchant OS</a>
 			
 					<span>|</span>
-					<a href="http://127.0.0.1:8080/YiYi/OA_adminLogin.html">Admin OS</a>
+					<a href="OA_adminLogin.html">Admin OS</a>
 					<span>|</span>
 				</div>
 				<div class="shop">
 					<a href="javascript:void(0);">
-						<i class="iconfont" style="font-size: 14px;"></i>
-						购物车(<span style="color: white;">1</span>)
+						<i class="iconfont" style="font-size: 14px;">&#xe61b;</i>
+						购物车(<span style="color: white;">0</span>)
 					</a>
 				</div>
 
-					
+				
 				<!-- 用户登录 -->
 				<div class="userinfo">
 
 					<div class="user">
-						<div class="userInfo" style="background-color: #333333;"><span onclick="personalToggle()" style="color: #b0b0b0;font-size: 12px">欢迎您: 钟南山!</span></div>
+						<div class="userInfo" style="background-color: #333333;"><span onclick="personalToggle()" style="color: #b0b0b0;font-size: 12px">欢迎您!</span></div>
 						<ul id="personal">
-							<li><a href="http://127.0.0.1:8080/YiYi/userinfo.jsp">个人中心</a></li>
-							<li><a href="http://127.0.0.1:8080/YiYi/">晒单评价</a></li>
-							<li><a href="http://127.0.0.1:8080/YiYi/">我的喜欢</a></li>
-							<li><a href="http://127.0.0.1:8080/YiYi/">账户安全</a></li>
-							<li><a href="http://127.0.0.1:8080/YiYi/servlet/user/logout">退出登录</a></li>
+							<li><a href="userinfo.jsp">个人中心</a></li>
+							<li><a href="">晒单评价</a></li>
+							<li><a href="">我的喜欢</a></li>
+							<li><a href="">账户安全</a></li>
+							<li><a href="servlet/user/logout">退出登录</a></li>
 						</ul>
 					</div>
-					<a class="link" href="http://127.0.0.1:8080/YiYi/">消息通知</a>
+					<a class="link" href="">消息通知</a>
 					<span>|</span>
-					<a class="link" href="http://127.0.0.1:8080/YiYi/">我的订单</a>
+					<a class="link" href="">我的订单</a>
 					<span>|</span>
 					</div>
 				
+				 <div class="login">
+				<a href="userLogin.jsp">登录</a>
+				<span>|</span>
+				<a href="userRegist.jsp">注册</a>
+				<span>|</span>
+				<a href="#">消息通知</a>
+				</div>
 				
 
 			</div>
@@ -139,56 +150,56 @@
 		<div class="header">
 			<div class="container">
 				<div class="site-logo">
-					<a href="http://127.0.0.1:8080/YiYi/index.html">
-						<img src="./shoppingcar_files/yilogo.jpg">
+					<a href="index.html">
+						<img src="images/yilogo.jpg">
 					</a>
 				</div>
 				<div class="site-list">
 					<ul class="clearfix">
 						<li class="site-category">
-							<a href="http://127.0.0.1:8080/YiYi/"></a>
+							<a href=""></a>
 							<!-- 侧边栏 -->
 
 						</li>
 						<li>
-							<a href="http://127.0.0.1:8080/YiYi/#">小米手机</a>
+							<a href="#">小米手机</a>
 						</li>
 						<li>
-							<a href="http://127.0.0.1:8080/YiYi/#">红米</a>
+							<a href="#">红米</a>
 						</li>
 						<li>
-							<a href="http://127.0.0.1:8080/YiYi/#">电视</a>
+							<a href="#">电视</a>
 						</li>
 						<li>
-							<a href="http://127.0.0.1:8080/YiYi/#">笔记本</a>
+							<a href="#">笔记本</a>
 						</li>
 						<li>
-							<a href="http://127.0.0.1:8080/YiYi/#">家电</a>
+							<a href="#">家电</a>
 						</li>
 						<li>
-							<a href="http://127.0.0.1:8080/YiYi/#">新品</a>
+							<a href="#">新品</a>
 						</li>
 						<li>
-							<a href="http://127.0.0.1:8080/YiYi/#">路由器</a>
+							<a href="#">路由器</a>
 						</li>
 						<li>
-							<a href="http://127.0.0.1:8080/YiYi/#">智能硬件</a>
+							<a href="#">智能硬件</a>
 						</li>
 						<li>
-							<a href="http://127.0.0.1:8080/YiYi/#">服务</a>
+							<a href="#">服务</a>
 						</li>
 						<li>
-							<a href="http://127.0.0.1:8080/YiYi/#">社区</a>
+							<a href="#">社区</a>
 						</li>
 					</ul>
 				</div>
 				<div class="site-search">
-					<form action="http://127.0.0.1:8080/YiYi/">
+					<form action="">
 						<input type="text" name="shop" class="search-text">
-						<input type="submit" class="search-btn iconfont" value="" style="font-size: 24px;">
+						<input type="submit" class="search-btn iconfont" value="&#xe60b;" style="font-size: 24px;">
 						<div class="search-word">
-							<a href="http://127.0.0.1:8080/YiYi/#">小米9</a>
-							<a href="http://127.0.0.1:8080/YiYi/#">小米9 SE</a>
+							<a href="#">小米9</a>
+							<a href="#">小米9 SE</a>
 						</div>
 					</form>
 				</div>
@@ -199,7 +210,7 @@
 			<div class="cart-warp">
 				<div class="w list-head">
 					<div class="t-checkall">
-						<input id="checkall" class="input" type="checkbox">
+						<input id="checkall" class="input" type="checkbox" />
 						<label for="checkall"></label>全选
 					</div>
 					<div class="car-img">商品图片</div>
@@ -210,29 +221,29 @@
 					<div class="car-action">操作</div>
 				</div>
 				<div class="w list-body">
-					
+					<c:forEach var="oqlist" items="${showShoppingCars}" varStatus="st">
 						<div class="item-box">
 							<div class="t-check">
-								<input id="input1" class="j-checkbox" type="checkbox" value="45">
-								<label for="input1"></label>
+								<input id="input${st.count }" class="j-checkbox" type="checkbox" value="${oqlist.shoppingCarId }"/>
+								<label for="input${st.count }"></label>
 							</div>
 							<div class="car-img">
-								<img src="./shoppingcar_files/sj5.jpg" alt="">
+								<img src="${pageContext.request.contextPath}\image\/${oqlist.goodsImg}" alt="" />
 							</div>
-							<div class="car-name">iphonex</div>
-							<div class="car-goodsID" style="display: none;">45</div>
-							<div class="car-price">2999.0</div>
+							<div class="car-name">${oqlist.goodsName }</div>
+							<div name="goodsid" class="car-goodsID" style="display: none;">${oqlist.goodsId }</div>
+							<div name="" class="car-price">${oqlist.goodsPrice }</div>
 							<div class="change-goods-num">
 								<a href="javascript:;" class="J_minus">-</a>
-								<input type="text" class="goods-num" value="2">
+								<input name="ordergoodscount" type="text" class="goods-num" value="${oqlist.shoppingcarSum}"/>
 								<a href="javascript:;" class="J_plus">+</a>
 							</div>
-							<div class="car-total">5998.0</div>
+							<div class="car-total">${oqlist.sumGoodsnumber }</div>
 							<div class="car-action">
-								<a href="javascript:;" title="删除" class="iconfont iconclose" style="font-size: 18px; font-weight: bold;"></a>
+								<a href="javascript:;" title="删除"  class="iconfont iconclose" style="font-size: 18px; font-weight: bold;"></a>
 							</div>
 						</div>
-					
+					</c:forEach>
 				</div>
 				<div class="cart-bar w" id="J_cartBar">
 					<div class="operation">
@@ -240,45 +251,45 @@
 						<a href="javascript:;" class="clear-all">清理购物车</a> -->
 					</div>
 					<div class="toolbar-right">
-						<div class="amount-sum">已经选<em>0</em>件商品</div>
-						<div class="price-sum">总价:<em>￥0.00</em></div>
-						<div class="btn-area"><a href="Order.html"><input type="button" value="结算" style="width: 100%;height: 100%;background-color: #ff6700;"></a></div>
+						<div class="amount-sum">已经选<em>3</em>件商品</div>
+						<div class="price-sum" name="totalPrice" >总价:<em>￥67.20</em></div>
+						<div class="btn-area"><input type="button" value="结算" onclick="pay()" style="width: 100%;height: 100%;background-color: #ff6700;"/></div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- 脚部 <--><!------>
+		<!-- 脚部 <--></-->
 		<div class="footer">
 			<div class="container">
 				<div class="footer-service">
 					<ul class="clearfix">
 						<li class="first">
-							<a href="http://127.0.0.1:8080/YiYi/#">
-								<i class="iconfont"></i>
+							<a href="#">
+								<i class="iconfont">&#xe629;</i>
 								购物指南
 							</a>
 						</li>
 						<li>
-							<a href="http://127.0.0.1:8080/YiYi/#">
-								<i class="iconfont"></i>
+							<a href="#">
+								<i class="iconfont">&#xe629;</i>
 								合作招商
 							</a>
 						</li>
 						<li>
-							<a href="http://127.0.0.1:8080/YiYi/#">
-								<i class="iconfont"></i>
+							<a href="#">
+								<i class="iconfont">&#xe629;</i>
 								营销中心
 							</a>
 						</li>
 						<li>
-							<a href="http://127.0.0.1:8080/YiYi/#">
-								<i class="iconfont"></i>
+							<a href="#">
+								<i class="iconfont">&#xe629;</i>
 								商家帮助
 							</a>
 						</li>
 						<li>
-							<a href="http://127.0.0.1:8080/YiYi/#">
-								<i class="iconfont"></i>
+							<a href="#">
+								<i class="iconfont">&#xe629;</i>
 								联系我们
 							</a>
 						</li>
@@ -333,8 +344,8 @@
 							<br>
 							（仅收市话费）
 						</p>
-						<a href="http://127.0.0.1:8080/YiYi/#">
-							<i class="iconfont"></i>
+						<a href="#">
+							<i class="iconfont">&#xe641;</i>
 							联系客服
 						</a>
 					</div>
@@ -437,5 +448,5 @@
 				height: 20px;
 			}
 		</style>
-	
-</body></html>
+	</body>
+</html>

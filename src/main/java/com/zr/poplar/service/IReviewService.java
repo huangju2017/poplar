@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.zr.poplar.pojo.Goods;
 import com.zr.poplar.pojo.Review;
+import com.zr.poplar.pojo.ReviewExt;
 
 /**
  * 评论接口
@@ -32,6 +33,6 @@ public interface IReviewService {
 	 * @param goodsId
 	 * @return
 	 */
-	List<Review> showAllReview();
+	List<ReviewExt> showAllReview();
 	
 }

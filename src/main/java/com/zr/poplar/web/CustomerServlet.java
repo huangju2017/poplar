@@ -1,6 +1,7 @@
 package com.zr.poplar.web;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,7 +48,18 @@ public class CustomerServlet extends HttpServlet{
 			logout(req, resp);
 		}else if ("changeInfor".equals(cmd)) {
 			changeInfor(req, resp);
+		}else if ("findCustomer".equals(cmd)) {
+			findCustomer(req,resp);
 		}
+
+	}
+	private void findCustomer(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		ICustomerService service=new CustomerService();
+		List<Customer> showAllCustomer = service.showAllCustomer();
+		
+		req.setAttribute("customers", showAllCustomer);
+		req.getRequestDispatcher("/OA_User.jsp").forward(req, resp);
 	}
 	private void changeInfor(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//获取信息

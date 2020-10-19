@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.zr.poplar.dao.IOrderDao;
 import com.zr.poplar.dao.impl.OrderDao;
+import com.zr.poplar.pojo.MyOrder;
 import com.zr.poplar.pojo.Orderform;
 import com.zr.poplar.service.IOrderService;
 
@@ -23,23 +24,24 @@ public class OrderService implements IOrderService{
 	 * 添加订单
 	 */
 	@Override
-	public Orderform addOrder(Orderform orderform) {
+	public boolean addOrder(Orderform orderform) {
 		return dao.addOrder(orderform);
 	}
 	
 	/**
 	 * 删除订单
+	 * @return 
 	 */
 	@Override
-	public void deleteOrder(Integer id) {
-		dao.deleteOrder(id);
+	public boolean deleteOrder(Integer id) {
+		return dao.deleteOrder(id);
 	}
 	
 	/**
 	 * 显示所有订单
 	 */
 	@Override
-	public List<Orderform> showAllOrder() {
+	public List<MyOrder> showAllOrder() {
 		return dao.showAllOrder();
 	}
 	
@@ -47,8 +49,9 @@ public class OrderService implements IOrderService{
 	 * 根据用户ID查询所有订单
 	 */
 	@Override
-	public List<Orderform> showById() {
-		return dao.showById();
+	public List<MyOrder> findById(Integer custormerId) {
+		// TODO Auto-generated method stub
+		return dao.findById(custormerId);
 	}
 
 }

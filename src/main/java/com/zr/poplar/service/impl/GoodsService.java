@@ -9,16 +9,17 @@ import com.zr.poplar.service.IGoodsService;
 
 /**
  * 商品实现类
+ * 
  * @author GoodsService
  *
  */
-public class GoodsService implements IGoodsService{
-	
+public class GoodsService implements IGoodsService {
+
 	/**
 	 * 数据实现层
 	 */
 	IGoodsDao dao = new GoodsDao();
-	
+
 	/**
 	 * 添加商品
 	 */
@@ -26,7 +27,7 @@ public class GoodsService implements IGoodsService{
 	public Boolean addGoods(Goods goods) {
 		return dao.addGoods(goods);
 	}
-	
+
 	/**
 	 * 删除商品
 	 */
@@ -34,7 +35,7 @@ public class GoodsService implements IGoodsService{
 	public Boolean deleteGoods(Integer id) {
 		return dao.deleteGoods(id);
 	}
-	
+
 	/**
 	 * 显示所有商品
 	 */
@@ -42,21 +43,41 @@ public class GoodsService implements IGoodsService{
 	public List<Goods> showAllGoods() {
 		return dao.showAllGoods();
 	}
-	
+
 	/**
-	 * 根据商品类型查找商品
+	 * 根据商品名称查找商品
 	 */
 	@Override
-	public List<Goods> findGoodsByType(String goodsType) {
-		return dao.findGoodsByType(goodsType);
+	public List<Goods> findGoodsByName(String goodsName) {
+		return dao.findGoodsByName(goodsName);
 	}
-	
+
 	/**
 	 * 根据ID修改商品信息
 	 */
 	@Override
-	public Goods changeGoods(Integer id) {
-		return dao.changeGoods(id);
+	public Boolean changeGoods(Goods goods) {
+		return dao.changeGoods(goods);
+	}
+
+	@Override
+	public Boolean lowerOrUpper(String status, Integer id) {
+		return dao.lowerOrUpper(status, id);
+	}
+	
+	/**
+	 * 根据id 获取该商品的信息
+	 * 
+	 */
+	@Override
+	public Goods productpage(Integer goodsId) {
+		return dao.productpage(goodsId);
+	}
+
+	@Override
+	public List<Goods> showSort(String goodsType) {
+		return dao.showSort(goodsType);
+		
 	}
 
 }

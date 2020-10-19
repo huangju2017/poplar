@@ -6,6 +6,7 @@ import com.zr.poplar.dao.IReviewDao;
 import com.zr.poplar.dao.impl.ReviewDao;
 import com.zr.poplar.pojo.Goods;
 import com.zr.poplar.pojo.Review;
+import com.zr.poplar.pojo.ReviewExt;
 import com.zr.poplar.service.IReviewService;
 
 /**
@@ -40,7 +41,7 @@ public class ReviewService implements IReviewService{
 	 * 展示所有评论
 	 */
 	@Override
-	public List<Review> showAllReview() {
+	public List<ReviewExt> showAllReview() {
 		return dao.showAllReview();
 	}
 

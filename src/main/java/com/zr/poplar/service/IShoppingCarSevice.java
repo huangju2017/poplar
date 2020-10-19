@@ -3,6 +3,7 @@ package com.zr.poplar.service;
 import java.util.List;
 
 import com.zr.poplar.pojo.ShoppingCar;
+import com.zr.poplar.pojo.ShoppingCarExt;
 
 public interface IShoppingCarSevice {
 
@@ -25,7 +26,7 @@ public interface IShoppingCarSevice {
 	 * @param customer_id
 	 * @return
 	 */
-	List<ShoppingCar> showShoppingCar(Integer customer_id);
+	List<ShoppingCarExt> showShoppingCar(Integer customer_id);
 	
 	/**
 	 * 修改商品数量

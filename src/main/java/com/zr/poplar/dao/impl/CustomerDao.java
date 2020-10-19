@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import com.zr.poplar.dao.ICustomerDao;
 import com.zr.poplar.pojo.Customer;
@@ -83,6 +84,19 @@ public class CustomerDao implements ICustomerDao {
 	 */
 	@Override
 	public List<Customer> showAllCustomer() {
+		String sql="select * from customer";
+		QueryRunner runner = new QueryRunner(TxDBUtils.getSource());
+		try {
+			List<Customer> query = runner.query(sql,new BeanListHandler<Customer>(Customer.class));
+			System.out.println("query:"+query);
+			if (query!=null) {
+				
+				return query;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 	

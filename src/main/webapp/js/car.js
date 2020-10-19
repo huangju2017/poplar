@@ -70,13 +70,15 @@ $(function(){
 	})
 	$('.car-action a').click(function(){
 		var truthBeTold = window.confirm("单击“确定”继续。单击“取消”停止。");
+		alert("truth:"+truthBeTold);
 		if (truthBeTold) {
 			var goodsId = $(this).parent().parent().children(".t-check").children(".j-checkbox").val();
-//			alert(goodsId)
+			alert(goodsId);
 			var formdata = {
 					"goodsId": goodsId
 			};
-			$.post("servlet/productpage/deleteshoppingcar",formdata,function(data){
+			$.post("shoppingcarServlet?cmd=deleteShoppingcar",formdata,function(data){
+				alert("jingru");
 				var json = JSON.parse(data);
 				if(json.success){
 					alert("删除成功");

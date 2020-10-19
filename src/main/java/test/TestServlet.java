@@ -11,6 +11,7 @@ import com.zr.poplar.dao.impl.EmpDao;
 import com.zr.poplar.dao.impl.ReviewDao;
 import com.zr.poplar.pojo.Emp;
 import com.zr.poplar.pojo.Review;
+import com.zr.poplar.pojo.ReviewExt;
 import com.zr.poplar.service.IEmpService;
 import com.zr.poplar.service.impl.EmpService;
 
@@ -43,7 +44,8 @@ public class TestServlet {
 		/**
 		 * 测试查询
 		 */
-		List<Review> list = dao2.showAllReview();
+		System.err.println("---------------------------");
+		List<ReviewExt> list = dao2.showAllReview();
 		System.out.println(list);
 
 		/**
