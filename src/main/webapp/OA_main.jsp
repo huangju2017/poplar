@@ -41,8 +41,8 @@
 		</style>
 	</head>
 		<div>
-			<h1>欢迎来到易易二手交易平台</h1>
-			<h2>Welcome to the background of easy second hand trading network</h2>
+			<h1>欢迎来到白杨商城后台服务</h1>
+			<h2>Welcome to Aspen Mall backstage service</h2>
 		</div>
 		<img src="images/beijingtu.jpg" />
 	</body>

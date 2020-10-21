@@ -29,6 +29,8 @@
 	type="text/javascript" charset="utf-8"></script>
 <script src="./index_files/layui.js.下载" type="text/javascript"
 	charset="utf-8"></script>
+<script src="js/shoppingCartVerification1.js" type="text/javascript"
+	charset="utf-8"></script>
 
 <script type="text/javascript">
 	/**
@@ -44,12 +46,12 @@
 	}
 </script>
 <script type="text/javascript"> 
-　　window.onload =function getCustomer(){
-	var goods = <%=request.getAttribute("goods")%>;
-		if(goods="null"){
-			window.location.href="${pageContext.request.contextPath}/goods?cmd=showAllGoods&flag=1";
-		}
-　　}
+	window.onload =function getCustomer(){
+		var goods = <%=session.getAttribute("goods")%>;
+			if(goods="null"){
+				window.location.href="http://localhost:8080/poplar/goods?cmd=showAllGoods&flag=1";
+			}
+	　　}
 </script>
 </head>
 <body>
@@ -57,25 +59,35 @@
 	<div class="topBar">
 		<div class="container">
 			<div class="topBar_list">
-				<a class="navbar-brand agileinfo" href="index.jsp">白杨 服饰</a> <span>|</span>
+				<a class="navbar-brand agileinfo" href="index.jsp">白杨商城</a> <span>|</span>
 				<a href="#">云服务</a> <span>|</span> <a href="#">金融</a> <span>|</span>
 				<a href="#">资质证照</a> <span>|</span> <a href="sellerLogin.jsp">Merchant
 					OS</a> <span>|</span> <a href="OA_adminLogin.jsp">Admin OS</a> <span>|</span>
 			</div>
 			<div class="shop">
 				<!-- servlet/productpage/orderitem -->
-				<a href="shoppingcar.jsp"> <i class="iconfont"
-					style="font-size: 14px;"></i> 购物车(<span style="color: white;">0</span>)
+				<a href="javascript:void(0);"> <i class="iconfont"
+					style="font-size: 14px;"></i> 购物车
 				</a>
 			</div>
 
-
+			<c:if test="${customer==null}">
 			游客登陆
 			<div class="login">
-				<a href="userLogin.jsp">登录</a> <span>|</span> <a
-					href="userRegist.jsp">注册</a> <span>|</span> <a href="#">消息通知</a>
-			</div>
-
+					<a href="userLogin.jsp">登录</a> <span>|</span> <a
+						href="userRegist.jsp">注册</a> <span>|</span> <a href="#">消息通知</a>
+				</div>
+			</c:if>
+			<c:if test="${customer!=null}">
+			会员登录
+			<div class="login">
+					<a href="userinfo.jsp">${customer.customerName}</a> <span>|</span>
+					<a
+						href="${pageContext.request.contextPath}/customerServlet?cmd=logout">安全退出</a>
+					<span>|</span> <a
+						href="${pageContext.request.contextPath}/orderServlet?cmd=queryAllOrder">我的订单</a>
+				</div>
+			</c:if>
 
 		</div>
 	</div>
@@ -100,7 +112,8 @@
 			</div>
 			<div class="site-search">
 				<form
-					action="${pageContext.request.contextPath}/goods?cmd=findGoodsByName" method="post">
+					action="${pageContext.request.contextPath}/goods?cmd=findGoodsByName"
+					method="post">
 					<input type="text" name="shop" class="search-text"> <input
 						type="submit" class="search-btn iconfont" value=""
 						style="font-size: 24px;">
@@ -120,21 +133,6 @@
 	<!-- 主页内容 -->
 	<div class="site-content">
 		<div class="container">
-			<!-- 轮播图 -->
-			<!-- <div class="site-slider">
-					<a href="#">
-						<img src="images/yuan.jpg">
-					</a>
-					<span class="next"></span>
-					<span class="prev"></span>
-					<div class="slider-item">
-						<a href="#"></a>
-						<a href="#"></a>
-						<a href="#"></a>
-						<a href="#"></a>
-						<a href="#"></a>
-					</div>
-				</div> -->
 			<div style="height: 300px;">
 				<object style="border: 0px;" type="text/x-scriptlet"
 					data="lunbo.html" width="100%" height="100%"></object>
@@ -207,7 +205,7 @@
 						<div class="row-r">
 							<ul class="u1">
 								<c:forEach items="${goods}" var="g" begin="0" step="1"
-									varStatus="vs" end="8">
+									varStatus="vs" end="7">
 									<c:if test="${g.goodsType=='手机'}">
 										<li><input type="hidden" name="goodsId"
 											value="${g.goodsId}">
@@ -255,7 +253,7 @@
 						<div class="row-r">
 							<ul class="u2">
 								<c:forEach items="${goods}" var="g" begin="0" step="1"
-									varStatus="vs" end="8">
+									varStatus="vs" end="15">
 									<c:if test="${g.goodsType=='电脑'}">
 										<li><input type="hidden" name="goodsId"
 											value="${g.goodsId}">
@@ -301,11 +299,10 @@
 					<!-- 内容右边 -->
 
 					<div class="row-r">
-						<c:forEach items="${goods}" var="g" begin="0" step="1"
-							varStatus="vs" end="8">
-							<c:if test="${g.goodsType=='化妆品'}">
-								<ul class="u3">
-
+						<ul class="u3">
+							<c:forEach items="${goods}" var="g" begin="0" step="1"
+								varStatus="vs" end="32">
+								<c:if test="${g.goodsType=='化妆品'}">
 									<li><input type="hidden" name="goodsId"
 										value="${g.goodsId}">
 										<div class="figure">
@@ -319,8 +316,8 @@
 											<span class="num">${g.goodsPrice}</span>元
 										</p>
 										<div class="flag flag-new">新品</div></li>
-							</c:if>
-						</c:forEach>
+								</c:if>
+							</c:forEach>
 						</ul>
 					</div>
 
@@ -352,7 +349,7 @@
 
 						<ul class="u4">
 							<c:forEach items="${goods}" var="g" begin="0" step="1"
-								varStatus="vs" end="8">
+								varStatus="vs" end="23">
 								<c:if test="${g.goodsType=='服装'}">
 									<li><input type="hidden" name="goodsId"
 										value="${g.goodsId}">

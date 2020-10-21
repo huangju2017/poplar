@@ -60,6 +60,18 @@ public interface IGoodsService {
 	 */
 	Goods productpage(Integer goodsId);
 
+	/**
+	 * 根据物品类型查看商品
+	 * @param goodsType
+	 * @return
+	 */
 	List<Goods> showSort(String goodsType);
+
+	/**
+	 * 根据id回显商品
+	 * @param gid
+	 * @return
+	 */
+	Goods showGoods(Integer gid);
 
 }

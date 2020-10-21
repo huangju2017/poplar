@@ -7,8 +7,12 @@
 <!--<base href="">--><base href=".">
 <title>用户登录</title>
 <link rel="stylesheet" type="text/css" href="./userLogin_files/loginregist.css">
+<script src="./productpage_files/jquery-3.5.1.min.js.下载" type="text/javascript" charset="utf-8"></script>
 <script src="./userLogin_files/loginregist.js.下载"></script>
+
 <script src="./userLogin_files/jquery-3.5.1.min.js.下载"></script>
+<script src="js/shoppingCartVerification1.js" type="text/javascript" charset="utf-8"></script>
+
 <link rel="stylesheet" type="text/css" href="./userLogin_files/reset.css">
 		<link rel="stylesheet" type="text/css" href="./userLogin_files/fonts.css">
 		<link rel="stylesheet" type="text/css" href="./userLogin_files/iconfont.css">
@@ -42,7 +46,7 @@ h2{
 		<div class="topBar">
 			<div class="container">
 				<div class="topBar_list">
-					<a href="index.html">易易商城</a>
+					<a href="index.jsp">白杨商城</a>
 					<span>|</span>
 					<a href="#">云服务</a>
 					<span>|</span>
@@ -50,14 +54,15 @@ h2{
 					<span>|</span>
 					<a href="#">资质证照</a>
 					<span>|</span>
-					<a href="#">Merchant OS</a>
+					<a href="sellerLogin.jsp">Merchant OS</a>
 					<span>|</span>
-					<a href="OA_adminLogin.html">Admin OS</a>
+					<a href="OA_adminLogin.jsp">Admin OS</a>
 					<span>|</span>
 				</div>
 				<div class="shop">
-					<a href="shoppingcar.html">
-						<i class="iconfont" style="font-size: 14px;"></i> 购物车(0)
+					<a href="javascript:void(0);">
+						<i class="iconfont" style="font-size: 14px;"></i>
+						购物车
 					</a>
 				</div>
 
@@ -113,8 +118,6 @@ h2{
 					<input type="password" placeholder="Password" name="loginPassword" id="loginPassword">
 					<p class="error"></p>
 					<p class="register text-tips"><input type="checkbox" name="isAuto" value="1">下次自动登录</p>
-					<!-- <a href="userinfo.html">登录</a>
-					<p class="register"><a href="userRegist.html">注册</a></p> -->
 					<input type="submit" value="登录" id="subm">
 				</div>
 			</div>

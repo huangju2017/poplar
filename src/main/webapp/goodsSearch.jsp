@@ -40,7 +40,7 @@
 	<div class="topBar">
 		<div class="container">
 			<div class="topBar_list">
-				<a href="index.jsp">易易商城</a> <span>|</span> <a href="#">云服务</a> <span>|</span>
+				<a href="index.jsp">白杨商城</a> <span>|</span> <a href="#">云服务</a> <span>|</span>
 				<a href="#">金融</a> <span>|</span> <a href="#">资质证照</a> <span>|</span>
 				<a href="sellerLogin.jsp">Merchant OS</a> <span>|</span> <a
 					href="OA_adminLogin.jsp">Admin OS</a> <span>|</span>
@@ -54,7 +54,7 @@
 
 			<%
 				//获得Sesison缓存中用户数据(对象)
-			Customer user = (Customer) session.getAttribute("user");
+			Customer user = (Customer) session.getAttribute("customer");
 			//判断Session中是否缓存了用户数据
 			if (user != null) {
 			%>
@@ -76,7 +76,7 @@
 					</ul>
 				</div>
 				<a class="link" href="">消息通知</a> <span>|</span> <a class="link"
-					href="">我的订单</a> <span>|</span>
+					href="${pageContext.request.contextPath}/orderServlet?cmd=queryAllOrder">我的订单</a> <span>|</span>
 			</div>
 			<%
 				} else {
@@ -97,7 +97,7 @@
 	<div class="header">
 		<div class="container">
 			<div class="site-logo">
-				<a href="index.jsp"> <img src="images/yilogo.jpg">
+				<a href="index.jsp"> <img src="./index_files/yilogo.jpg">
 				</a>
 			</div>
 			<div class="site-list">
@@ -120,7 +120,7 @@
 				</ul>
 			</div>
 			<div class="site-search">
-				<form action="servlet/goods/goodssearch">
+				<form action="${pageContext.request.contextPath}/goods?cmd=findGoodsByName" method="post">
 					<input type="text" name="shop" class="search-text"> <input
 						type="submit" class="search-btn iconfont" value="&#xe60b;"
 						style="font-size: 24px;">

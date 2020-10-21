@@ -142,7 +142,7 @@ public class ShoppingCarServlet extends HttpServlet{
 	private void showShoppingCar(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
-		Customer customer= (Customer) req.getSession().getAttribute("customer");;
+		Customer customer= (Customer) req.getSession().getAttribute("customer");
 		/*
 		 * System.out.println("customer:"+customer); Map<String, Object> temp = new
 		 * HashMap<>(); if (customer==null) { System.out.println("请先登录");
@@ -242,7 +242,7 @@ public class ShoppingCarServlet extends HttpServlet{
 		String orderId = UUIDUtils.getCode();
 		//购物车实体类封装数据
 		ShoppingCar shoppingCar=new ShoppingCar(null, goodsId, customerId, shoppingcarSum, sumGoodsnumber, orderId);
-		
+		System.out.println("shoppingcar:"+shoppingCar);
 		//调用购物车的service方法
 		IShoppingCarSevice service=new ShoppingCarService();
 		Boolean addShoppingCar = service.addShoppingCar(shoppingCar);

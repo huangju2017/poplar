@@ -114,7 +114,7 @@
 					
 				</div>
 				<div class="site-search">
-					<form action="servlet/goods/goodssearch">
+					<form action="${pageContext.request.contextPath}/goods?cmd=findGoodsByName" method="post">
 						<input type="text" name="shop" class="search-text">
 						<input type="submit" class="search-btn iconfont" value="&#xe60b;" style="font-size: 24px;">
 						<div class="search-word">

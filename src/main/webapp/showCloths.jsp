@@ -61,7 +61,7 @@
 				<!-- servlet/productpage/orderitem -->
 					<a href="javascript:void(0);">
 						<i class="iconfont" style="font-size: 14px;">&#xe61b;</i>
-						购物车(<span style="color: white;">0</span>)
+						购物车
 					</a>
 				</div>
 
@@ -114,7 +114,7 @@
 					
 				</div>
 				<div class="site-search">
-					<form action="servlet/goods/goodssearch">
+					<form action="${pageContext.request.contextPath}/goods?cmd=findGoodsByName" method="post">
 						<input type="text" name="shop" class="search-text">
 						<input type="submit" class="search-btn iconfont" value="&#xe60b;" style="font-size: 24px;">
 						<div class="search-word">

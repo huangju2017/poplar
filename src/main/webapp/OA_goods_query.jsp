@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	    
+
 <!-- 引入核心标签库 -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -52,24 +52,24 @@
 
 			})
 	$(document).on(
-			"change",
-			"#sel",
-			function() {
-				var sel = $(this).val();
-				var goodsId = $(this).parent().parent().children().first()
-						.children().val();
-				/* alert(sel+" : "+goodsId); */
-				var fromData = {
-					"sel" : sel,
-					"goodsId" : goodsId
-				}
-				$.post("${pageContext.request.contextPath}/goods?cmd=lowerOrUpper&flag=2", fromData, function(data) {
-					var json = JSON.parse(data);
-					if (json.success) {
-						alert("更改成功");
-					}
-				})
-			});
+					"change",
+					"#sel",
+					function() {
+						var sel = $(this).val();
+						var goodsId = $(this).parent().parent().children()
+								.first().children().val();
+						/* alert(sel+" : "+goodsId); */
+						var fromData = {
+							"sel" : sel,
+							"goodsId" : goodsId
+						}
+						$.post("${pageContext.request.contextPath}/goods?cmd=lowerOrUpper&flag=2",fromData, function(data) {
+							var json = JSON.parse(data);
+							if (json.success) {
+								alert("更改成功");
+								}
+							})
+							});
 
 	function checkAll() {
 		var commain = document.getElementById("checkmain")
@@ -93,31 +93,36 @@
 		$("body").removeClass('modal-open');
 	}
 	//修改商品价格
-	$(document).on(
-			"click",
-			"#on3",
-			function() {
-				var price = $(this).parent().parent().children().first()
-						.children().last().val();
+	$(document)
+			.on(
+					"click",
+					"#on3",
+					function() {
+						var price = $(this).parent().parent().children()
+								.first().children().last().val();
 
-				alert(goodsId + price);
-				var fromData = {
-					"price" : price,
-					"goodsId" : goodsId
-				}
-				var fromData = {
-					"price" : price,
-					"goodsId" : goodsId
-				}
-				$.post("${pageContext.request.contextPath}/goods?cmd=changeGoods&flag=2", fromData, function(data) {
-					var json = JSON.parse(data);
-					if (json.success) {
-						alert("更改成功");
-						window.location.href = "OA_goods_query.jsp";
-					}
-				})
-				setTimeout(modalClose1, 1);
-			});
+						alert(goodsId + price);
+						var fromData = {
+							"price" : price,
+							"goodsId" : goodsId
+						}
+						var fromData = {
+							"price" : price,
+							"goodsId" : goodsId
+						}
+						$
+								.post(
+										"${pageContext.request.contextPath}/goods?cmd=changeGoods&flag=2",
+										fromData,
+										function(data) {
+											var json = JSON.parse(data);
+											if (json.success) {
+												alert("更改成功");
+												window.location.href = "OA_goods_query.jsp";
+											}
+										})
+						setTimeout(modalClose1, 1);
+					});
 	function go() {
 		$("#on").click(function() {
 			setTimeout(modalClose, 1000);
@@ -134,6 +139,7 @@
 			var id = $(this).val();
 			$(".goodsId").val(id);
 		});
+
 	}
 	function ok() {
 		setTimeout(modalClose2, 1000);
@@ -146,38 +152,17 @@
 		form.action = "${pageContext.request.contextPath}/goods?cmd=deleteGoods&flag=2";
 		form.submit();
 	}
-	//出库点击
-	function outLibrary() {
-		$.get("servlet/goods/outLibrary", function(data) {
-			var json = JSON.parse(data);
-			var libraryList = json.libraryList;
-			$("#tab tr:nth-child(n+1)").remove();
-			for (i in libraryList) {
-				var library = libraryList[i];
-				var coun = parseInt(i) + 1;
-				$("#pageMain2").append(
-						"<tr>" + "<td class='yincang'>" + coun + "</td>"
-								+ "<td class='yincang'>" + library.sname
-								+ "</td>" + "<td class='yincang'>"
-								+ library.order_count + "</td>"
-								+ "<td class='yincang'>" + library.outTime
-								+ "</td>" + "</tr>");
 
-			}
-			fenye2();
-		})
-	}
-	/**
-	 * 模态框分页
-	 * 
-	 */
+	$(function(){
+		fenye2();
+	});
 	function fenye2() {
 		var tabPage;
 		tabPage({
-			pageMain : '#pageMain2',
-			pageNav : '#pageNav2',
-			pagePrev : '#prev2',
-			pageNext : '#next2',
+			pageMain : '#pageMain',
+			pageNav : '#pageNav',
+			pagePrev : '#prev',
+			pageNext : '#next',
 			curNum : 5,
 			/*每页显示的条数*/
 			activeClass : 'active',
@@ -322,46 +307,47 @@
 		formData.append("describes", describes);
 
 		//JQuery AJAX上传文件
-		$.ajax({
-			url : "${pageContext.request.contextPath}/goods?cmd=addGoods&flag=2",//请求服务器路径
-			data : formData, //要发送到服务器的数据。
-			type : "post", //向服务器提交数据的方法
-			dataType : "json", //服务器响应的数据类型。
-			cache : false,
-			processData : false,
-			contentType : false,
-			success : function(data) {
-				//判断上传文件是否成功
-				if (data.success) {
-					alert("上传文件成功!");
+		$
+				.ajax({
+					url : "${pageContext.request.contextPath}/goods?cmd=addGoods&flag=2",//请求服务器路径
+					data : formData, //要发送到服务器的数据。
+					type : "post", //向服务器提交数据的方法
+					dataType : "json", //服务器响应的数据类型。
+					cache : false,
+					processData : false,
+					contentType : false,
+					success : function(data) {
+						//判断上传文件是否成功
+						if (data.success) {
+							alert("上传文件成功!");
 
-				} else {
-					alert("上传文件失败!");
-				}
-			},
-			xhr : function() {
-				//创建xhr对象
-				var xhr = new XMLHttpRequest();
-				//绑定上传进度改变事件
-				xhr.upload.onprogress = function() {
-					//初始化进度
-					var percentComplete = 100;
-					//判断上传文件的总大小是否>0
-					if (event.lengthComputable) {
-						var percentComplete = parseInt(event.loaded
-								/ event.total * 100);
+						} else {
+							alert("上传文件失败!");
+						}
+					},
+					xhr : function() {
+						//创建xhr对象
+						var xhr = new XMLHttpRequest();
+						//绑定上传进度改变事件
+						xhr.upload.onprogress = function() {
+							//初始化进度
+							var percentComplete = 100;
+							//判断上传文件的总大小是否>0
+							if (event.lengthComputable) {
+								var percentComplete = parseInt(event.loaded
+										/ event.total * 100);
+							}
+							//获得进度条
+							var progressBar = $(".progress-bar");
+							//修改进度
+							progressBar.css("width", percentComplete + "%");
+							progressBar.text(percentComplete + "%");
+
+							setTimeout(modalClose, 1);
+						}
+						return xhr;
 					}
-					//获得进度条
-					var progressBar = $(".progress-bar");
-					//修改进度
-					progressBar.css("width", percentComplete + "%");
-					progressBar.text(percentComplete + "%");
-
-					setTimeout(modalClose, 1);
-				}
-				return xhr;
-			}
-		});
+				});
 	}
 	/**
 	 * 初始化上传相关控件
@@ -431,50 +417,7 @@ h2 {
 </style>
 </head>
 <body style="">
-	<!--头-->
-	<div class="topBar">
-		<div class="container">
-			<div class="topBar_list">
-				<a href="http://127.0.0.1:8080/YiYi/index.jsp">易易商城</a> <span>|</span>
-				<a href="http://127.0.0.1:8080/YiYi/#">云服务</a> <span>|</span> <a
-					href="http://127.0.0.1:8080/YiYi/#">金融</a> <span>|</span> <a
-					href="http://127.0.0.1:8080/YiYi/#">资质证照</a> <span>|</span>
-			</div>
-
-
-			<!-- 用户登录 -->
-			<div class="userinfo">
-
-				<div class="user">
-					<div class="userInfo" style="background-color: #333333;">
-						<span onclick="personalToggle()"
-							style="color: #b0b0b0; font-size: 12px">欢迎您: z,m,s!</span>
-					</div>
-					<ul id="personal">
-						<li><a href="http://127.0.0.1:8080/YiYi/userinfo.jsp">个人中心</a></li>
-						<li><a href="http://127.0.0.1:8080/YiYi/">账户安全</a></li>
-						<li><a
-							href="http://127.0.0.1:8080/YiYi/servlet/seller/logout">退出登录</a></li>
-					</ul>
-				</div>
-				<a class="link" href="http://127.0.0.1:8080/YiYi/index.jsp">返回首页</a>
-				<span>|</span>
-			</div>
-
-
-
-		</div>
-	</div>
-	<!-- 导航栏 -->
-	<div class="header">
-		<div class="container">
-			<div class="site-logo">
-				<a href="http://127.0.0.1:8080/YiYi/index.html"> <img
-					src="./OA_goods_query_files/yilogo.jpg">
-				</a>
-			</div>
-			<div class="site-list">
-				<style type="text/css">
+<style type="text/css">
 body {
 	background-color: #F7EFEF;
 }
@@ -594,10 +537,6 @@ div.search {
 }
 </style>
 
-				<a href="http://127.0.0.1:8080/YiYi/#" class="shun shun-shun"
-					data-letters="zms的店"
-					style="text-align: center; text-decoration: none; display: block; padding: 26px 10px 38px;">商铺名字</a>
-
 
 			</div>
 		</div>
@@ -684,20 +623,21 @@ div.search {
 								<button type="button" class="close" data-dismiss="modal"
 									aria-hidden="true">×</button>
 							</div>
-							<form action="${pageContext.request.contextPath}/goods?cmd=changeGoods"
+							<form
+								action="${pageContext.request.contextPath}/goods?cmd=changeGoods"
 								method="post">
-								<%-- <input type="hidden" class="goodsId" name="goodsID1" value="${ }"> --%>
+								<input type="text" class="goodsId" name="goodsID1">
 								<div class="form-group">
 									<label for="gname">商品名称:</label> <input type="text"
-										class="form-control" id="gname1" name="gname1">
+										class="form-control" id="gname1" name="gname1" value="">
 								</div>
 								<div class="form-group">
 									<label for="gprice">商品价格:</label> <input type="text"
-										class="form-control" id="gprice1" name="gprice1">
+										class="form-control" id="gprice1" name="gprice1" value="">
 								</div>
 								<div class="form-group">
 									<label for="gcount">商品数量:</label> <input type="text"
-										class="form-control" id="gcount1" name="gcount1">
+										class="form-control" id="gcount1 " name="gcount1" value="">
 								</div>
 								<div class="form-group">
 									<label for="gtype">商品类型:</label> <select class="form-control"
@@ -712,11 +652,11 @@ div.search {
 								</div>
 								<div class="form-group">
 									<label for="gdes">商品描述:</label> <input type="text"
-										class="form-control" id="gdes1" name="gdes1">
+										class="form-control" id="gdes1" name="gdes1" value="">
 								</div>
 								<div class="modal-footer">
 									<input type="submit" id="on2" class="btn btn-primary"
-										style="margin-left: 100px;"  value="确认">
+										style="margin-left: 100px;" onclick="ok()" value="确认">
 									<button type="reset" class="btn btn-primary"
 										style="margin-left: 100px; margin-right: 100px;">重置</button>
 									<button type="button" id="showdown2" class="btn btn-primary"
@@ -807,37 +747,37 @@ div.search {
 								<th>商品图片</th>
 								<th>商品价格</th>
 								<th>商品总数量</th>
-								<th>出库数量</th>
 								<th>商品类型</th>
 								<th>商品描述</th>
 								<th>商品状态</th>
 								<th>上架时间</th>
 							</tr>
 						</thead>
-						<c:forEach items="${goods}" var="g" begin="0" step="1" varStatus="vs">
 						<tbody id="pageMain">
-							<!--id="containet"-->
+							<c:forEach items="${goods}" var="g" begin="0" step="1"
+								varStatus="vs">
+
+								<!--id="containet"-->
 
 
-							<tr style="display: table-row;">
-								<td class="yincang"><input type="checkbox" id="gid"
-									name="com" value="${g.goodsId}"></td>
-								<td class="yincang">${vs.count }</td>
-								<td class="yincang">${g.goodsName}</td>
-								<td class="yincang"><img
-									src="${pageContext.request.contextPath}\image\/${g.goodsImg}"></td>
-								<td class="yincang"><a id="upprice" data-toggle="modal"
-									data-target="#myModal1">${g.goodsPrice}</a></td>
-								<td class="yincang">${g.goodsNumber}</td>
-								<td class="yincang"></td>
-								<td class="yincang">${g.goodsType}</td>
-								<td class="yincang">${g.goodsContent}</td>
-								<td class="yincang">${g.goodsStatus}<br>
-								<select id="sel"><option>已入库</option>
-										<option>上架</option>
-										<option>下架</option></select></td>
-								<td class="yincang">${g.dateTime}</td>
-							</tr>
+								<tr style="display: table-row;">
+									<td class="yincang"><input type="checkbox" id="gid"
+										name="com" value="${g.goodsId}"></td>
+									<td class="yincang">${vs.count }</td>
+									<td class="yincang">${g.goodsName}</td>
+									<td class="yincang"><img
+										src="${pageContext.request.contextPath}\image\/${g.goodsImg}"></td>
+									<td class="yincang"><a id="upprice" data-toggle="modal"
+										data-target="#myModal1">${g.goodsPrice}</a></td>
+									<td class="yincang">${g.goodsNumber}</td>
+									<td class="yincang">${g.goodsType}</td>
+									<td class="yincang">${g.goodsContent}</td>
+									<td class="yincang">${g.goodsStatus}<br> <select
+										id="sel"><option>已入库</option>
+											<option>上架</option>
+											<option>下架</option></select></td>
+									<td class="yincang">${g.dateTime}</td>
+								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
@@ -865,10 +805,6 @@ div.search {
 					<li title="点击添加入库商品"><i class="iconfont iconnavicon-rkyw"></i>
 						<a href="javascript:void(0)" data-toggle="modal"
 						data-target="#myModal6" class=" rota">入库商品</a></li>
-					<li title="点击查看出库信息"><i class="iconfont iconnavicon-ckyw"></i>
-						<a href="javascript:void(0)" data-toggle="modal"
-						data-target="#myModal3" class="rota" onclick="outLibrary()">出库信息</a>
-					</li>
 					<li title="点击修改信息"><i class="iconfont iconxiugai1"></i> <a
 						href="javascript:void(0)" data-toggle="modal"
 						data-target="#myModal2" class="rota" onclick="modalClose3()">修改信息</a>
@@ -880,78 +816,6 @@ div.search {
 					</li>
 
 				</ul>
-			</div>
-		</div>
-	</div>
-	<!--尾-->
-	<div class="footer">
-		<div class="container">
-			<div class="footer-service">
-				<ul class="clearfix">
-					<li class="first"><a href="http://127.0.0.1:8080/YiYi/#">
-							<i class="iconfont"></i> 预约维修服务
-					</a></li>
-					<li><a href="http://127.0.0.1:8080/YiYi/#"> <i
-							class="iconfont"></i> 预约维修服务
-					</a></li>
-					<li><a href="http://127.0.0.1:8080/YiYi/#"> <i
-							class="iconfont"></i> 预约维修服务
-					</a></li>
-					<li><a href="http://127.0.0.1:8080/YiYi/#"> <i
-							class="iconfont"></i> 预约维修服务
-					</a></li>
-					<li><a href="http://127.0.0.1:8080/YiYi/#"> <i
-							class="iconfont"></i> 预约维修服务
-					</a></li>
-
-				</ul>
-			</div>
-			<div class="footer-links clearfix">
-				<dl class="col-links">
-					<dt>帮助中心</dt>
-					<dd>账户管理</dd>
-					<dd>购物指南</dd>
-					<dd>订单操作</dd>
-				</dl>
-				<dl class="col-links">
-					<dt>帮助中心</dt>
-					<dd>账户管理</dd>
-					<dd>购物指南</dd>
-					<dd>订单操作</dd>
-				</dl>
-				<dl class="col-links">
-					<dt>帮助中心</dt>
-					<dd>账户管理</dd>
-					<dd>购物指南</dd>
-					<dd>订单操作</dd>
-				</dl>
-				<dl class="col-links">
-					<dt>帮助中心</dt>
-					<dd>账户管理</dd>
-					<dd>购物指南</dd>
-					<dd>订单操作</dd>
-				</dl>
-				<dl class="col-links">
-					<dt>帮助中心</dt>
-					<dd>账户管理</dd>
-					<dd>购物指南</dd>
-					<dd>订单操作</dd>
-				</dl>
-				<dl class="col-links">
-					<dt>帮助中心</dt>
-					<dd>账户管理</dd>
-					<dd>购物指南</dd>
-					<dd>订单操作</dd>
-				</dl>
-				<div class="col-contact">
-					<p class="iphone">400-100-10086</p>
-					<p>
-						周一至周日 8:00-18:00 <br> （仅收市话费）
-					</p>
-					<a href="http://127.0.0.1:8080/YiYi/#"> <i class="iconfont"></i>
-						联系客服
-					</a>
-				</div>
 			</div>
 		</div>
 	</div>

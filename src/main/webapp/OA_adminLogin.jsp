@@ -7,8 +7,10 @@
 <!--<base href="">--><base href=".">
 <title>管理员登录</title>
 <link rel="stylesheet" type="text/css" href="./userLogin_files/loginregist.css">
+<script src="./productpage_files/jquery-3.5.1.min.js.下载" type="text/javascript" charset="utf-8"></script>
 <script src="./userLogin_files/loginregist.js.下载"></script>
 <script src="./userLogin_files/jquery-3.5.1.min.js.下载"></script>
+<script src="js/shoppingCartVerification1.js" type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="./userLogin_files/reset.css">
 		<link rel="stylesheet" type="text/css" href="./userLogin_files/fonts.css">
 		<link rel="stylesheet" type="text/css" href="./userLogin_files/iconfont.css">
@@ -42,7 +44,7 @@ h2{
 		<div class="topBar">
 			<div class="container">
 				<div class="topBar_list">
-					<a href="http://localhost:8080/poplar/">白杨商城</a>
+					<a href="index.jsp">白杨商城</a>
 					<span>|</span>
 					<a href="#">云服务</a>
 					<span>|</span>
@@ -50,47 +52,22 @@ h2{
 					<span>|</span>
 					<a href="#">资质证照</a>
 					<span>|</span>
-					<a href="http://localhost:8080/poplar/sellerLogin.jsp">Merchant OS</a>
+					<a href="sellerLogin.jsp">Merchant OS</a>
 					<span>|</span>
-					<a href="#">Admin OS</a>
+					<a href="OA_adminLogin.jsp">Admin OS</a>
 					<span>|</span>
 				</div>
 				<div class="shop">
-					<a href="shoppingcar.html">
-						<i class="iconfont" style="font-size: 14px;"></i> 购物车(0)
+					<a href="javascript:void(0);">
+						<i class="iconfont" style="font-size: 14px;"></i>
+						购物车
 					</a>
 				</div>
-
-				<!-- 游客登陆 -->
-				<!-- <div class="login">
-				<a href="#">登录</a>
-				<span>|</span>
-				<a href="#">注册</a>
-				<span>|</span>
-				<a href="#">消息通知</a>
-			</div> -->
 
 				<!-- 用户登录 -->
 				<div class="userinfo">
 					<div class="user">
 						<a class="tit" href="">用户</a>
-						<ul>
-							<li>
-								<a href="userinfo.html">个人中心</a>
-							</li>
-							<li>
-								<a href="">晒单评价</a>
-							</li>
-							<li>
-								<a href="">我的喜欢</a>
-							</li>
-							<li>
-								<a href="">账户安全</a>
-							</li>
-							<li>
-								<a href="">退出登录</a>
-							</li>
-						</ul>
 					</div>
 					<a class="link" href="">消息通知</a>
 					<span>|</span>

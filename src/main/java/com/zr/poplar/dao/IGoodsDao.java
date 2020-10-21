@@ -57,5 +57,7 @@ public interface IGoodsDao {
 	Goods productpage(Integer goodsId);
 
 	List<Goods> showSort(String goodsType);
+
+	Goods showGoods(Integer gid);
 	
 }

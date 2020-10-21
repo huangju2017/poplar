@@ -4,7 +4,7 @@ $(document).ready(function () {
         	
             $.post("shoppingcarServlet?cmd=showShoppingCarValidate", function(data) {
             	//转换成JSON对象
-            	alert("jjj");
+//            	alert("jjj");
             	var json = JSON.parse(data);
 /*            	alert("shopc:"+${showShoppingCars});
 */            	//alert(json.success);

@@ -5,13 +5,13 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -70,7 +70,18 @@ public class GoodsServlet extends HttpServlet {
 			productpage(req, resp);
 		} else if ("showSort".equals(cmd)) {
 			showSort(req, resp);
+		}else if("showGoods".equals(cmd)) {
+			showGoods(req,resp);
 		}
+	}
+
+	private void showGoods(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		Integer gid = Integer.valueOf(req.getParameter("goodsId"));
+		System.out.println(gid);
+		Goods goods = service.showGoods(gid);
+		HttpSession session = req.getSession();
+		session.setAttribute("goodsById",goods );
 	}
 
 	private void showSort(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -143,8 +154,7 @@ public class GoodsServlet extends HttpServlet {
 			Integer goodsNumber = Integer.valueOf(req.getParameter("gcount1"));
 			String goods_Class = req.getParameter("gtype1");
 			String goodsContent = req.getParameter("gdes1");
-			Integer goodsId = Integer.valueOf(req.getParameter("com"));
-			System.out.println(goodsId);
+			Integer goodsId = Integer.valueOf(req.getParameter("goodsID1"));
 			String goodsType = null;
 
 			if ("1".equals(goods_Class)) {
@@ -202,9 +212,11 @@ public class GoodsServlet extends HttpServlet {
 		String flag = req.getParameter("flag");
 		System.out.println("falg：" + flag);
 		List<Goods> goods = service.showAllGoods();
-		req.setAttribute("goods", goods);
+		HttpSession session = req.getSession();
+		session.setAttribute("goods", goods);
+		System.out.println(goods);
 		if (flag.equals("1"))
-			req.getRequestDispatcher("index.jsp").forward(req, resp);
+			resp.sendRedirect("index.jsp");
 		else
 			req.getRequestDispatcher("OA_goods_query.jsp").forward(req, resp);
 
@@ -222,10 +234,11 @@ public class GoodsServlet extends HttpServlet {
 
 		String[] gID = req.getParameterValues("com");
 		Integer gid = 0;
+		Boolean flag=false;
 		for (String string : gID) {
 			gid = (Integer.parseInt(string));
+			flag = service.deleteGoods(gid);
 		}
-		Boolean flag = service.deleteGoods(gid);
 		if (flag)
 			showAllGoods(req, resp);
 
@@ -356,7 +369,7 @@ public class GoodsServlet extends HttpServlet {
 						// String path = req.getServletContext().getRealPath("/image");
 						// String realPath = this.getClass().getResource("").getPath();
 						// System.out.println(path);
-						String path = "D:\\java\\Git\\poplar\\src\\main\\webapp" + File.separator + "image";
+						String path = "D:\\zr\\eclipse\\poplar\\src\\main\\webapp" + File.separator + "image";
 						File dir = new File(path);
 
 						if (!dir.exists()) {

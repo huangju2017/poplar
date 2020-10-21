@@ -74,10 +74,21 @@ public class GoodsService implements IGoodsService {
 		return dao.productpage(goodsId);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public List<Goods> showSort(String goodsType) {
 		return dao.showSort(goodsType);
 		
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public Goods showGoods(Integer gid) {
+		return dao.showGoods(gid);
 	}
 
 }

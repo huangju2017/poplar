@@ -44,12 +44,6 @@
 				<li class="layui-nav-item"><a href="javascript:;"> <img
 						src="./OA_YiYi_index_files/RCzsdCq" class="layui-nav-img">
 
-
-				</a> <!-- <dl class="layui-nav-child">
-							<dd><a href="">基本资料</a></dd>
-							<dd><a href="">安全设置</a></dd>
-						</dl> --></li>
-
 				<li class="layui-nav-item"><a
 					href="http://localhost:8080/poplar/">&nbsp;&nbsp;退出</a></li>
 				<span class="layui-nav-bar"></span>
@@ -61,47 +55,29 @@
 				<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
 				<ul class="layui-nav layui-nav-tree">
 					<li class="layui-nav-item layui-nav-itemed"><a class=""
-						href="OA_main.jsp" target="mainFrame">评论管理<span class="layui-nav-more"></span></a>
+						href="${pageContext.request.contextPath }/reviewServlet?cmd=findreview" target="mainFrame">评论管理<span class="layui-nav-more"></span></a>
 						<dl class="layui-nav-child">
 							<dd class="">
 								<a href="${pageContext.request.contextPath }/reviewServlet?cmd=findreview" target="mainFrame">查看评论</a>
 							</dd>
 						</dl></li>
-					<li class="layui-nav-item layui-nav-itemed"><a href=""
-						target="mainFrame">公告管理<span class="layui-nav-more"></span></a>
-						<dl class="layui-nav-child">
-							<dd class="">
-								<a href="" target="mainFrame">发布公告</a>
-							</dd>
-							<dd class="">
-								<a href="" target="mainFrame">查看公告</a>
-							</dd>
-						</dl></li>
+					
 					<li class="layui-nav-item layui-nav-itemed"><a
-						href=""
+						href="${pageContext.request.contextPath }/customerServlet?cmd=findCustomer"
 						target="mainFrame">会员管理<span class="layui-nav-more"></span></a>
 						<dl class="layui-nav-child">
 							<dd class="">
 								<a href="${pageContext.request.contextPath }/customerServlet?cmd=findCustomer" target="mainFrame">会员查看</a>
 							</dd>
 						</dl></li>
-					<!-- <li class="layui-nav-item layui-nav-itemed"><a href="#"
-						target="mainFrame">商家管理<span class="layui-nav-more"></span></a>
+					<li class="layui-nav-item layui-nav-itemed"><a href="${pageContext.request.contextPath }/goods?cmd=showAllGoods&flag=3"
+						target="mainFrame">商品管理<span class="layui-nav-more"></span></a>
 						<dl class="layui-nav-child">
 							<dd class="">
-								<a href="#" target="mainFrame">申请审核</a>
+								<a href="${pageContext.request.contextPath }/goods?cmd=showAllGoods&flag=3" target="mainFrame">商品信息</a>
 							</dd>
 						</dl>
-						<dl class="layui-nav-child">
-							<dd class="">
-								<a href="#" target="mainFrame">审核记录</a>
-							</dd>
-						</dl>
-						<dl class="layui-nav-child">
-							<dd class="layui-this">
-								<a href="#" target="mainFrame">商家展示</a>
-							</dd>
-						</dl></li> -->
+						</dl></li> 
 					<span class="layui-nav-bar"
 						style="top: 317.5px; height: 0px; opacity: 0;"></span>
 				</ul>
@@ -115,37 +91,7 @@
 					width="100%" height="100%" frameborder="0"></iframe>
 			</div>
 		</div>
-		<%-- <div class="layui-body">
-			<!-- 内容主体区域 -->
-			<div style="padding: 15px; width: 100%; height: 100%;">
-				<table class="table table-striped table-hover">
-					<thead>
-						<tr>
-							<th>序号</th>
-							<th>员工编号</th>
-							<th>员工姓名</th>
-							<th>密码</th>
-							<th>操作</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${emp1}" var="u" begin="0" step="1"
-							varStatus="vs">
-							<tr>
-								<td>${u.empId }</td>
-								<td>${u.empNumber }</td>
-								<td>${u.empName }</td>
-								<td>${u.empPassword }</td>
-								<td><a
-									href="${pageContext.request.contextPath }/empServlet?cmd=deleteEmp&id=${u.empId}"
-									class="btn btn-danger">删除</a></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-		</div>
- --%>
+		
 		<div class="layui-footer">
 			<!-- 底部固定区域 -->
 			© YiYi.com - 如有问题请联系总部

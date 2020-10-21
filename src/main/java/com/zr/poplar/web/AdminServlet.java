@@ -64,6 +64,7 @@ public class AdminServlet extends HttpServlet {
 		if ("rootLogin".equals(cmd)) {
 			rootLogin(req, resp);
 		} else if ("deleteEmp".equals(cmd)) {
+			System.out.println("deleteEmp");
 			deleteEmp(req, resp);
 		} else if ("showAllEmp".equals(cmd)) {
 			System.out.println("showAllEMp");
@@ -86,8 +87,10 @@ public class AdminServlet extends HttpServlet {
 		Boolean lint = root.addEmp(emp);
 
 		if (lint) {
-			resp.getWriter().write("添加成功");
-			showAllEmp(req, resp);
+			resp.getWriter().write("添加成功,三秒后自动返回");
+			resp.setHeader("refresh", "3;url=/poplar/OA_query_seller.jsp");
+			//resp.sendRedirect("refresh;3,url=OA_query_seller.jsp");
+			//showAllEmp(req, resp);
 
 		} else {
 			req.setAttribute("register_msg", "添加失败，请检查数据");
@@ -114,8 +117,9 @@ public class AdminServlet extends HttpServlet {
 
 	private void deleteEmp(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		String id = req.getParameter("id");
+		System.out.println(id);
 		root.deleteEmp(id);
-		showAllEmp(req, resp);
+		req.getRequestDispatcher("/OA_query_seller.jsp").forward(req, resp);
 
 	}
 
@@ -128,7 +132,7 @@ public class AdminServlet extends HttpServlet {
 		System.out.println(login);
 		if (login == null) {
 			req.setAttribute("login_msg", "账号或密码有误，请检查登录");
-			req.getRequestDispatcher("/OA_adminLogin1.jsp.jsp").forward(req, resp);
+			req.getRequestDispatcher("/OA_adminLogin1.jsp").forward(req, resp);
 			return;
 		}
 		req.getSession().setAttribute("root1", login);

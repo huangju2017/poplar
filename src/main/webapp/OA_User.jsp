@@ -27,7 +27,7 @@
 				coms[i].checked = false;
 
 			}
-		}else{
+		} else {
 			for (var i = 0; i < coms.length; i++) {
 				coms[i].checked = true;
 

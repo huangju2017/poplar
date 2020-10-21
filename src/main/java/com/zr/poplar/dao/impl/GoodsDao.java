@@ -154,4 +154,16 @@ public class GoodsDao implements IGoodsDao {
 		return null;
 	}
 
+	@Override
+	public Goods showGoods(Integer gid) {
+		String sql ="select * from goods where goodsId=?";
+		QueryRunner runner = new QueryRunner(TxDBUtils.getSource());
+		try {
+			return runner.query(sql, new BeanHandler<Goods>(Goods.class), gid);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

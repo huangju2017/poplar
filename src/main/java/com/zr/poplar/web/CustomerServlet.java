@@ -88,7 +88,7 @@ public class CustomerServlet extends HttpServlet{
 		/**
 		 * 清除session
 		 */
-		req.getSession().invalidate();
+		req.getSession().removeAttribute("customer");
 
 		/**
 		 * 重定向到主页

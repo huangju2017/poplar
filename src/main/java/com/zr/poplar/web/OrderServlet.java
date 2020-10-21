@@ -170,6 +170,7 @@ public class OrderServlet extends HttpServlet {
 
 		// 调用OrderService服务中查询所有订单的方法
 		List<MyOrder> list = service.findById(customerId);
+		System.out.println(list);
 		// System.out.println(list);
 		// 把数据存储在请求作用域中
 		req.setAttribute("myorders", list);

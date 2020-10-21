@@ -58,7 +58,7 @@ public class ReviewServlet extends HttpServlet{
 
 		IReviewService service=new ReviewService();
 		List<ReviewExt> showAllReview = service.showAllReview();
-		
+		System.out.println(showAllReview);
 		req.setAttribute("commentList", showAllReview);
 		req.getRequestDispatcher("/OA_comment_query.jsp").forward(req, resp);
 	}

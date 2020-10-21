@@ -86,7 +86,7 @@ public class EmpServlet extends HttpServlet{
 		}
 			req.getSession().setAttribute("emp", login);
 //			showAllEmp(req, resp);O
-			req.getRequestDispatcher("/OA_goods_query.jsp").forward(req, resp);
+			req.getRequestDispatcher("/OA_YiYi_index.jsp").forward(req, resp);
 		
 	}
 

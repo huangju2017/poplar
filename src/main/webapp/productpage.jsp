@@ -96,7 +96,7 @@
 		<div class="topBar">
 			<div class="container">
 				<div class="topBar_list">
-					<a href="index.jsp">易易商城</a>
+					<a href="index.jsp">白杨商城</a>
 					<span>|</span>
 					<a href="http://127.0.0.1:8080/YiYi/#">云服务</a>
 					<span>|</span>
@@ -105,16 +105,16 @@
 					<a href="http://127.0.0.1:8080/YiYi/#">资质证照</a>
 					<span>|</span>
 			
-					<a href="http://127.0.0.1:8080/YiYi/sellerLogin.jsp">Merchant OS</a>
+					<a href="sellerLogin.jsp">Merchant OS</a>
 			
 					<span>|</span>
-					<a href="http://127.0.0.1:8080/YiYi/OA_adminLogin.jsp">Admin OS</a>
+					<a href="OA_adminLogin.jsp">Admin OS</a>
 					<span>|</span>
 				</div>
 				<div class="shop">
 					<a href="javascript:void(0);">
 						<i class="iconfont" style="font-size: 14px;"></i>
-						购物车(<span style="color: white;">0</span>)
+						购物车
 					</a>
 				</div>
 
@@ -216,11 +216,11 @@
 					<div class="xian"></div>
 					<div class="diz">
 						<div class="dz">
-							<i class="iconfont"></i>
 							
-							<span class="">暂无地址</span>
 							
-							<a href="http://127.0.0.1:8080/YiYi/">修改</a>
+							
+							
+							
 						</div>
 						<div class="xh">
 						
